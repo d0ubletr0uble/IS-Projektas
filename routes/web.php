@@ -17,6 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    echo 'hello';
+Route::get('/git-pull', function () {
+    exec('sudo git pull origin code');
 });
