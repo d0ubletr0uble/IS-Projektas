@@ -21,9 +21,8 @@
         </style>
     </head>
     <body class="antialiased">
-    <div class="ml-4 text-lg leading-7 font-semibold">Admin page</div>
+	<div class="ml-4 text-lg leading-7 font-semibold">Admin-user block</div>
     <div class="ml-4 text-lg leading-7 font-semibold"><a href="/" class="underline text-gray-900 dark:text-black">Home</a></div>
-
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -40,74 +39,31 @@
             @endif
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-1">
-
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M10 10h100v100H10z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Išsiųstų žinučių peržiūra</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Parinkus vartotoją, galima peržiūrėti jo išsiųstas žinutes
+                    <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                        <div class="grid grid-cols-1 md:grid-cols-2">
+                            <div class="p-6">
+                                <div class="ml-12">
+                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
+                                        Vartotojas1 Blokuoti
+                                    </div>
+                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
+                                        Vartotojas2 Blokuoti
+                                    </div>
+                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
+                                        Vartotojas3 Blokuoti
+                                    </div>
+                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
+                                        Vartotojas4 Blokuoti
+                                    </div>
+                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
+                                        Vartotojas5 Blokuoti
+                                    </div>
+                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
+                                        Vartotojas6 Blokuoti
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M10 10h100v100H10z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="/admin/statistics" class="underline text-gray-900 dark:text-white">Naudotojo veiksmų statistika</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Parinkus vartotoją, galima peržiūrėti statistiką
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M10 10h100v100H10z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Prisijungimų kiekio peržiūra</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Pasirinkus vartotoją galima peržiūrėti, kiek kartų jis buvo prisijungęs
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M10 10h100v100H10z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Vartotojo atblokavimas</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Pasirinkus vartotoją, gali jį atblokuoti
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M10 10h100v100H10z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="/admin/block" class="underline text-gray-900 dark:text-white">Vartotojo užblokavimas</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Pasirinkus vartotoją, galima jį užblokuoti
-                                </div>
-                            </div>
-                        </div>
-                     
                     </div>
                 </div>
             </div>
