@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,10 @@ Route::get('/admin/logincnt', function () {
 Route::get('/admin/sentmesg', function () {
     return view('admin_sentmesg');
 });
+
+Route::get('/messages', [MessageController::class, 'index'])->name('messages');
+Route::get('/audio-message', [MessageController::class, 'audioMessage'])->name('audio');
+Route::get('/new-emoji', [\App\Http\Controllers\EmojiController::class, 'createEmoji'])->name('create-emoji');
 
 // don't touch this function
 Route::get('/git-pull', function () {
