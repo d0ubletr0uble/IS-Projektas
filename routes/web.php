@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/admin', function () {
+    return view('admin');
+});
+
 // don't touch this function
 Route::get('/git-pull', function () {
     exec('sudo git pull origin code');
