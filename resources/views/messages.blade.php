@@ -25,8 +25,10 @@
 </head>
 <!--Coded With Love By Mutiullah Samim-->
 <body>
+<br>
 <div class="container-fluid h-100">
-    <h1>Žinučių langas</h1>
+
+    <h1><a class="fas fa-home" href="/"></a> Žinučių langas</h1>
     <div class="row justify-content-center h-100">
         <div class="col-md-4 col-xl-3 chat">
             <div class="card mb-sm-3 mb-md-0 contacts_card">
@@ -156,6 +158,7 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-end mb-4">
+                            <a style="color: red" href="" onclick="confirm('Ar tikrai norite ištrynti pasirinktą žinutę?')">X</a>
                         <div class="msg_cotainer_send" data-toggle="tooltip" data-placement="right" title="Žinutė pristatyta ir perskaityta">
                             Einu ruošis IS atsiskaitymui
                             <span class="msg_time_send">9:10 AM, Today</span>
