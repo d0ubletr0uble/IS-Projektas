@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\EmojiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +43,10 @@ Route::get('/admin/sentmesg', function () {
     return view('admin_sentmesg');
 });
 
+// message subsystem
 Route::get('/messages', [MessageController::class, 'index'])->name('messages');
 Route::get('/audio-message', [MessageController::class, 'audioMessage'])->name('audio');
-Route::get('/new-emoji', [\App\Http\Controllers\EmojiController::class, 'createEmoji'])->name('create-emoji');
+Route::get('/new-emoji', [EmojiController::class, 'createEmoji'])->name('create-emoji');
 
 // don't touch this function
 Route::get('/git-pull', function () {
