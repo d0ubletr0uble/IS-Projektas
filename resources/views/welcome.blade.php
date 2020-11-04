@@ -43,7 +43,8 @@
                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M10 10h100v100H10z"></path></svg>
                         <div class="ml-4 text-lg leading-7 font-semibold"><a href="/admin" class="underline text-gray-900 dark:text-white">Admin langas</a></div>
                         <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{route('messages')}}" class="underline text-gray-900 dark:text-white">Žinučių posistemis</a></div>
-                    </div>
+                        <div class="ml-4 text-lg leading-7 font-semibold"><a href="/forum" class="underline text-gray-900 dark:text-white">Turinio valdymas</a></div>
+                         </div>
                     <br>
                     <img width="600px" class="mx-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Orange-Whole-%26-Split.jpg/1280px-Orange-Whole-%26-Split.jpg" alt="">
                 </div>

@@ -48,6 +48,12 @@ Route::get('/messages', [MessageController::class, 'index'])->name('messages');
 Route::get('/audio-message', [MessageController::class, 'audioMessage'])->name('audio');
 Route::get('/new-emoji', [EmojiController::class, 'createEmoji'])->name('create-emoji');
 
+
+Route::get('/forum', function () {
+    return view('forum');
+});
+
+
 // don't touch this function
 Route::get('/git-pull', function () {
     exec('sudo git pull origin code');
