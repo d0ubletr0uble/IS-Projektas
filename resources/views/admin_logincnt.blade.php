@@ -44,22 +44,16 @@
                         <div class="p-6">
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas1 Peržiūrėti
+                                    2020-06-12: 3 kartai
                                 </div>
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas2 Peržiūrėti
+                                    2020-06-20: 2 kartai
                                 </div>
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas3 Peržiūrėti
+                                    2020-06-09: 1 kartas
                                 </div>
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas4 Peržiūrėti
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas5 Peržiūrėti
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas6 Peržiūrėti
+                                    2020-06-11: 3 kartai
                                 </div>
                             </div>
                         </div>

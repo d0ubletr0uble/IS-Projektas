@@ -43,25 +43,8 @@
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-6">
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas1 Atblokuoti
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas2 Atblokuoti
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas3 Atblokuoti
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas4 Atblokuoti
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas5 Atblokuoti
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas6 Atblokuoti
-                                </div>
+                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                                Processing...
                             </div>
                         </div>
                     </div>

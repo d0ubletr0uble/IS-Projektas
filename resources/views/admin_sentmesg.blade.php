@@ -21,7 +21,7 @@
         </style>
     </head>
     <body class="antialiased">
-	<div class="ml-4 text-lg leading-7 font-semibold">Admin-sent messages</div>
+	<div class="ml-4 text-lg leading-7 font-semibold">Admin-login count</div>
     <div class="ml-4 text-lg leading-7 font-semibold"><a href="/" class="underline text-gray-900 dark:text-black">Home</a></div>
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
             @if (Route::has('login'))
@@ -44,22 +44,16 @@
                         <div class="p-6">
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas1 Peržiūrėti
+                                    Zinute: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industr
                                 </div>
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas2 Peržiūrėti
+                                    Zinute: nce the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also t
                                 </div>
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas3 Peržiūrėti
+                                    Zinute: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industr
                                 </div>
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas4 Peržiūrėti
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas5 Peržiūrėti
-                                </div>
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                    Vartotojas6 Peržiūrėti
+                                    Zinute: nce the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also t
                                 </div>
                             </div>
                         </div>

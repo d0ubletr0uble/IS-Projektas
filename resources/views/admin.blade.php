@@ -45,69 +45,52 @@
 
                         <div class="p-6">
                             <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M10 10h100v100H10z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Išsiųstų žinučių peržiūra</a></div>
+                                <div class="ml-4 text-lg text-gray-200 leading-7 font-semibold">Administratoriaus vartotojų parinkimo langas</div>
                             </div>
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Parinkus vartotoją, galima peržiūrėti jo išsiųstas žinutes
+                                    <p style="color:red">
+                                        • Vartotojas1 
+                                        <a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Unblock</a> 
+                                        <a href="/admin/statistics" class="underline text-gray-900 dark:text-white">Statistics</a>   
+                                        <a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Login count</a>   
+                                        <a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Messages</a>  
+                                    </p>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M10 10h100v100H10z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="/admin/statistics" class="underline text-gray-900 dark:text-white">Naudotojo veiksmų statistika</a></div>
-                            </div>
-
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Parinkus vartotoją, galima peržiūrėti statistiką
+                                    • Vartotojas2 
+                                    <a href="/admin/block" class="underline text-gray-900 dark:text-white">Block</a>  
+                                    <a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Unblock</a>  
+                                    <a href="/admin/statistics" class="underline text-gray-900 dark:text-white">Statistics</a>   
+                                    <a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Login count</a>   
+                                    <a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Messages</a>   
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M10 10h100v100H10z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Prisijungimų kiekio peržiūra</a></div>
-                            </div>
-
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Pasirinkus vartotoją galima peržiūrėti, kiek kartų jis buvo prisijungęs
+                                    <p style="color:red">
+                                        • Vartotojas3
+                                        <a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Unblock</a> 
+                                        <a href="/admin/statistics" class="underline text-gray-900 dark:text-white">Statistics</a>   
+                                        <a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Login count</a>   
+                                        <a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Messages</a>  
+                                    </p>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M10 10h100v100H10z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Vartotojo atblokavimas</a></div>
-                            </div>
-
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Pasirinkus vartotoją, gali jį atblokuoti
+                                    • Vartotojas4
+                                    <a href="/admin/block" class="underline text-gray-900 dark:text-white">Block</a>  
+                                    <a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Unblock</a>  
+                                    <a href="/admin/statistics" class="underline text-gray-900 dark:text-white">Statistics</a>   
+                                    <a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Login count</a>   
+                                    <a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Messages</a>   
                                 </div>
                             </div>
                         </div>
-
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M10 10h100v100H10z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="/admin/block" class="underline text-gray-900 dark:text-white">Vartotojo užblokavimas</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Pasirinkus vartotoją, galima jį užblokuoti
-                                </div>
-                            </div>
-                        </div>
-                     
                     </div>
                 </div>
             </div>

@@ -43,23 +43,8 @@
                         <div class="grid grid-cols-1 md:grid-cols-2">
                             <div class="p-6">
                                 <div class="ml-12">
-                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                        Vartotojas1 Blokuoti
-                                    </div>
-                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                        Vartotojas2 Blokuoti
-                                    </div>
-                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                        Vartotojas3 Blokuoti
-                                    </div>
-                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                        Vartotojas4 Blokuoti
-                                    </div>
-                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                        Vartotojas5 Blokuoti
-                                    </div>
-                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                        Vartotojas6 Blokuoti
+                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                                        Processing...
                                     </div>
                                 </div>
                             </div>

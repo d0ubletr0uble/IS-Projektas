@@ -44,22 +44,19 @@
                             <div class="p-6">
                                 <div class="ml-12">
                                     <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                        Vartotojas1 Peržiūrėti
+                                        Statistika ____: 
                                     </div>
                                     <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                        Vartotojas2 Peržiūrėti
+                                        Statistika ____: 
                                     </div>
                                     <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                        Vartotojas3 Peržiūrėti
+                                        Statistika ____: 
                                     </div>
                                     <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                        Vartotojas4 Peržiūrėti
+                                        Statistika ____: 
                                     </div>
                                     <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                        Vartotojas5 Peržiūrėti
-                                    </div>
-                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-bg">
-                                        Vartotojas6 Peržiūrėti
+                                        Statistika ____: 
                                     </div>
                                 </div>
                             </div>
