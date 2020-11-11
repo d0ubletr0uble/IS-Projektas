@@ -21,34 +21,29 @@
     </style>
 
     <style>
-    .button1 {
-        position: absolute;
-        left: 1300px;
-        top:40px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 5px;
-    font-size: 16px;
-    border: none;
-    min-width: 150px;
-    }
+        .button2 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            min-width: 150px;
+        }
 
-    .button1:hover {
-    background-color:#3e8e41;
-    color:black;
-    font-family: "Lucida Console", Courier, monospace;
-    }
+        .button2:hover {
+            background-color:#3e8e41;
+            color:black;
+            font-family: "Lucida Console", Courier, monospace;
+        }
 
-    table{
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
 
     </style>
 </head>
 <body class="antialiased">
-<div class="ml-4 text-lg leading-7 font-semibold">Forumo puslapis</div>
-<div class="ml-4 text-lg leading-7 font-semibold"><a href="/" class="underline text-gray-900 dark:text-black">Pradžia</a></div>
+<div class="ml-4 text-lg leading-7 font-semibold">Forumo temos sukūrimo puslapis</div>
+
+<a class="ml-4 text-lg leading-7 font-semibold underline text-gray-900 dark:text-black" href="/">Pradžia</a> &nbsp;&nbsp
+<a class="text-lg leading-7 font-semibold underline text-gray-900 dark:text-black" href="/forum" >Forumas</a>
 
 <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
     @if (Route::has('login'))
@@ -66,24 +61,14 @@
     @endif
 
 
+        <form action="/forum">
+            <label for="tema">Įveskite temos pavadinimą:</label><br><br>
+            <input type="pav" name="pavadinimas" placeholder="Pavadinimas"><br><br><br>
 
-                <div>
-                    <a href="/forum/addtopic"><button class ="button1">Sukurti temą</button></a>
-                </div>
-
-        <table class="center table-bordered table">
-        <thead>
-            <tr>
-                <th style="height: 40px; width: 200px" scope="col">Tema</th>
-                <th scope="col">Sukūrimo data</th>
-            </tr>
-        </thead>
-            <tr>
-                <th><a class="underline"  href="/forum/test">Test</a></th>
-                <th><input type='date' id='hasta' value='<?php echo date('Y-m-d');?>'></th>
-            </tr>
-
-
+            <label for="tema">Įveskite temos tekstą:</label><br><br>
+            <textarea rows="10" cols="50" placeholder="Įveskite tekstą"></textarea><br><br>
+            <input type="submit" class="button2" value="Skelbti">
+        </form>
 
 </div>
 </body>

@@ -53,6 +53,14 @@ Route::get('/forum', function () {
     return view('forum');
 });
 
+Route::get('/forum/addtopic', function () {
+    return view('forum_addtopic');
+});
+
+Route::get('/forum/test', function () {
+    return view('forum_test');
+});
+
 
 // don't touch this function
 Route::get('/git-pull', function () {
