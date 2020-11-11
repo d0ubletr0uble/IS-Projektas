@@ -32,7 +32,22 @@
     border: none;
     min-width: 150px;
     }
-
+    .button2 {
+        position: absolute;
+        left: 1100px;
+        top:95px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 5px;
+        font-size: 16px;
+        border: none;
+        min-width: 150px;
+    }
+    .button2:hover {
+        background-color:#3e8e41;
+        color:black;
+        font-family: "Lucida Console", Courier, monospace;
+    }
     .button1:hover {
     background-color:#3e8e41;
     color:black;
@@ -67,9 +82,11 @@
 
 
 
-                <div>
+    <div>
                     <a href="/forum/addtopic"><button class ="button1">Sukurti temą</button></a>
-                </div>
+                    <a href="/forum/search"><button class ="button2">Paieškos langas</button></a>
+    </div>
+
 
         <table class="center table-bordered table">
         <thead>

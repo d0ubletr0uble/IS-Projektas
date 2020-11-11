@@ -61,6 +61,10 @@ Route::get('/forum/test', function () {
     return view('forum_test');
 });
 
+Route::get('/forum/search', function () {
+    return view('forum_search');
+});
+
 
 // don't touch this function
 Route::get('/git-pull', function () {

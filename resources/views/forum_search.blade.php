@@ -66,37 +66,39 @@
             @endif
         </div>
     @endif
-<br><br>
+    <br><br>
+
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                 <div class="grid grid-cols-1 md:grid-cols-1">
 
                     <div class="p-6">
                         <div class="flex items-center">
-                            <div class="ml-4 text-lg text-gray-200 leading-7 font-semibold">Temos pavadinimas: Tema</div>
+                            <div class="ml-4 text-lg text-gray-200 leading-7 font-semibold">Paieškos langas</div>
                         </div>
 
                         <div class="ml-12">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    • Turinys<br>
-                                    aaa<br>
-                                aaa<br>
-                                aaa<br>
+
+                                <form action="/forum">
+
+                                    <label for="tema">Įveskite temos pavadinimą:</label><br><br>
+                                    <input type="pav" name="pavadinimas" placeholder="Pavadinimas"><br><br>
+
+                                    Data:<br><input name='data' type='date'><br><br>
+
+
+
+
+                                    <input type='submit' name='ok' value='Ieškoti' >
+                                </form>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div><br>
-
-        <form action="/forum">
-
-            <label for="komentaras">Įveskite temos komentarą:</label><br><br>
-            <textarea rows="10" cols="50" placeholder="Įveskite tekstą"></textarea><br><br>
-            <input type="submit" class="button2" value="Rašyti komentarą">
-        </form>
-
-
+        </div>
 
 </div>
 
