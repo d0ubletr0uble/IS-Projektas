@@ -212,6 +212,17 @@ a:hover {
     cursor: pointer;
     background-color: rgba(0,0,0,0.2);
 }
+.test{
+    font-size: 15px;
+    position: absolute;
+    top: 60px;
+}
+.test:hover{
+    color: pink;
+}
+.test2:hover{
+    color: pink;
+}
 @media(max-width: 576px){
     .contacts_card{
         margin-bottom: 15px !important;

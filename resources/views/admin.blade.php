@@ -51,43 +51,43 @@
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                                     <p style="color:red">
-                                        • Vartotojas1 
-                                        <a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Unblock</a> 
-                                        <a href="/admin/statistics" class="underline text-gray-900 dark:text-white">Statistics</a>   
-                                        <a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Login count</a>   
-                                        <a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Messages</a>  
+                                        • Vartotojas1
+                                        <a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Unblock</a>
+                                        <a href="/admin/statistics" class="underline text-gray-900 dark:text-white">Statistics</a>
+                                        <a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Login count</a>
+                                        <a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Messages</a>
                                     </p>
                                 </div>
                             </div>
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    • Vartotojas2 
-                                    <a href="/admin/block" class="underline text-gray-900 dark:text-white">Block</a>  
-                                    <a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Unblock</a>  
-                                    <a href="/admin/statistics" class="underline text-gray-900 dark:text-white">Statistics</a>   
-                                    <a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Login count</a>   
-                                    <a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Messages</a>   
+                                    • Vartotojas2
+                                    <a href="/admin/block" class="underline text-gray-900 dark:text-white">Block</a>
+                                    <a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Unblock</a>
+                                    <a href="/admin/statistics" class="underline text-gray-900 dark:text-white">Statistics</a>
+                                    <a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Login count</a>
+                                    <a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Messages</a>
                                 </div>
                             </div>
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                                     <p style="color:red">
                                         • Vartotojas3
-                                        <a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Unblock</a> 
-                                        <a href="/admin/statistics" class="underline text-gray-900 dark:text-white">Statistics</a>   
-                                        <a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Login count</a>   
-                                        <a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Messages</a>  
+                                        <a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Unblock</a>
+                                        <a href="/admin/statistics" class="underline text-gray-900 dark:text-white">Statistics</a>
+                                        <a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Login count</a>
+                                        <a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Messages</a>
                                     </p>
                                 </div>
                             </div>
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                                     • Vartotojas4
-                                    <a href="/admin/block" class="underline text-gray-900 dark:text-white">Block</a>  
-                                    <a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Unblock</a>  
-                                    <a href="/admin/statistics" class="underline text-gray-900 dark:text-white">Statistics</a>   
-                                    <a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Login count</a>   
-                                    <a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Messages</a>   
+                                    <a href="/admin/block" class="underline text-gray-900 dark:text-white">Block</a>
+                                    <a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Unblock</a>
+                                    <a href="/admin/statistics" class="underline text-gray-900 dark:text-white">Statistics</a>
+                                    <a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Login count</a>
+                                    <a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Messages</a>
                                 </div>
                             </div>
                         </div>

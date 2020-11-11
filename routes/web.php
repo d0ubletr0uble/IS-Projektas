@@ -49,7 +49,21 @@ Route::get('/messages', [MessageController::class, 'index'])->name('messages');
 Route::get('/audio-message', [MessageController::class, 'audioMessage'])->name('audio');
 Route::get('/new-emoji', [EmojiController::class, 'createEmoji'])->name('create-emoji');
 
-
+Route::get('/messages/edit', function () {
+    return view('edit');
+});
+Route::get('/messages/create', function () {
+    return view('create');
+});
+Route::get('/messages/edit/adduser', function () {
+    return view('edit_adduser');
+});
+Route::get('/messages/edit/removeuser', function () {
+    return view('edit_removeuser');
+});
+Route::get('/messages/edit/changename', function () {
+    return view('edit_changename');
+});
 Route::get('/forum', function () {
     return view('forum');
 });

@@ -33,6 +33,14 @@
         <div class="col-md-4 col-xl-3 chat">
             <div class="card mb-sm-3 mb-md-0 contacts_card">
                 <div class="card-header">
+                    <div class="ml-12">
+                        <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                            <p style="color:whitesmoke">
+                                <a class="test2" href="/messages/create" class="underline text-gray-900 dark:text-white">Naujos grupės sukūrimas</a>
+                            </p>
+                        </div>
+                    </div>
+
                     <div class="input-group">
                         <input type="text" placeholder="Search..." name="" class="form-control search">
                         <div class="input-group-prepend">
@@ -88,6 +96,7 @@
                                     <span>Petras</span>
                                     <p>Offline 50min</p>
                                 </div>
+
                             </div>
                         </li>
                     </ui>
@@ -106,6 +115,7 @@
                         <div class="user_info">
                             <span>Susirašinėjimas su vartotoju: Jonas</span>
                             <p>1767 Messages</p>
+                            <span><a class="test" href="{{ url('/messages/edit') }}">Grupes nustatymai</a></span>
                         </div>
                     </div>
                 </div>
