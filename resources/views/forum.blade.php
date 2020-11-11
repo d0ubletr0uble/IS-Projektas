@@ -23,8 +23,8 @@
     <style>
     .button1 {
         position: absolute;
-        left: 1300px;
-        top:40px;
+        left: 1100px;
+        top:60px;
     background-color: #4CAF50;
     color: white;
     padding: 5px;
