@@ -398,12 +398,57 @@
         }
 
     </style>
+
+    <style>
+        .button1 {
+            position: absolute;
+            left: 1100px;
+            top: 60px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            min-width: 150px;
+        }
+
+        .button2 {
+            position: absolute;
+            left: 1100px;
+            top: 95px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            min-width: 150px;
+        }
+
+        .button2:hover {
+            background-color: #3e8e41;
+            color: black;
+            font-family: "Lucida Console", Courier, monospace;
+        }
+
+        .button1:hover {
+            background-color: #3e8e41;
+            color: black;
+            font-family: "Lucida Console", Courier, monospace;
+        }
+
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+    </style>
 </head>
 
 <body class="antialiased">
-    <div class="ml-4 text-lg leading-7 font-semibold">Admin-user block</div>
+    <div class="ml-4 text-lg leading-7 font-semibold">Forumo puslapis</div>
     <div class="ml-4 text-lg leading-7 font-semibold"><a href="/"
-            class="underline text-gray-900 dark:text-black">Home</a></div>
+            class="underline text-gray-900 dark:text-black">Pradžia</a></div>
+
     <div
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
         @if (Route::has('login'))
@@ -420,20 +465,40 @@
         </div>
         @endif
 
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    <div class="p-6">
-                        <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                Processing...
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div>
+            <a href="/forum/addtopic"><button class="button1">Sukurti temą</button></a>
+            <a href="/forum/search"><button class="button2">Paieškos langas</button></a>
         </div>
-    </div>
+
+
+        <table class="center table-bordered table">
+            <thead>
+                <tr>
+                    <th style="height: 40px; width: 200px;color: #89df67; font-size: 1.3rem " scope="col">Tema</th>
+                    <th style="height: 40px; width: 200px;color: #89df67; font-size: 1.3rem " scope="col">Sukūrimo data
+                    </th>
+                </tr>
+            </thead>
+            <tr>
+                <th><a class="text-lg text-gray-200 leading-7 font-semibold" href="/forum/test">Test1</a></th>
+                <th><input type='date' id='hasta' value='<?php echo date('Y-m-d');?>'></th>
+                <th><a href="/admin/admin_remove" class="text-gray-200">Remove</a></th>
+                <th><a href="/admin/admin_edit" class="text-gray-200">Edit</a></th>
+            </tr>
+            <tr>
+                <th><a class="text-lg text-gray-200 leading-7 font-semibold" href="/forum/test">Test2</a></th>
+                <th><input type='date' id='hasta' value='<?php echo date('Y-m-d');?>'></th>
+                <th><a href="/admin/admin_remove" class="text-gray-200">Remove</a></th>
+                <th><a href="/admin/admin_edit" class="text-gray-200">Edit</a></th>
+            </tr>
+            <tr>
+                <th><a class="text-lg text-gray-200 leading-7 font-semibold" href="/forum/test">Test2 </a> </th>
+                <th><input type='date' id='hasta' value='<?php echo date('Y-m-d');?>'></th>
+                <th><a href="/admin/admin_remove" class="text-gray-200">Remove</a></th>
+                <th><a href="/admin/admin_edit" class="text-gray-200">Edit</a></th>
+            </tr>
+        </table>
+
     </div>
 </body>
 

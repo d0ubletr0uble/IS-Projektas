@@ -398,12 +398,34 @@
         }
 
     </style>
+
+    <style>
+        .button2 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            min-width: 150px;
+        }
+
+        .button2:hover {
+            background-color: #3e8e41;
+            color: black;
+            font-family: "Lucida Console", Courier, monospace;
+        }
+
+    </style>
 </head>
 
 <body class="antialiased">
-    <div class="ml-4 text-lg leading-7 font-semibold">Admin-user block</div>
-    <div class="ml-4 text-lg leading-7 font-semibold"><a href="/"
-            class="underline text-gray-900 dark:text-black">Home</a></div>
+    <div class="ml-4 text-lg leading-7 font-semibold">Forumo temos koregavimo puslapis</div>
+
+    <a class="ml-4 text-lg leading-7 font-semibold underline text-gray-900 dark:text-black" href="/">Pradžia</a>
+    &nbsp;&nbsp
+    <a class="text-lg leading-7 font-semibold underline text-gray-900 dark:text-black"
+        href="/admin/admin_forum">Forumas</a>
+
     <div
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
         @if (Route::has('login'))
@@ -420,20 +442,16 @@
         </div>
         @endif
 
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    <div class="p-6">
-                        <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                Processing...
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+        <form action="/admin/admin_forum">
+            <label for="tema" class="text-gray-400">Įveskite temos pavadinimą:</label><br><br>
+            <input type="pav" name="pavadinimas" placeholder="Pavadinimas"><br><br><br>
+
+            <label for="tema" class="text-gray-400">Įveskite temos tekstą:</label><br><br>
+            <textarea rows="10" cols="50" placeholder="Įveskite tekstą"></textarea><br><br>
+            <input type="submit" class="button2" value="Koreguoti">
+        </form>
+
     </div>
 </body>
 

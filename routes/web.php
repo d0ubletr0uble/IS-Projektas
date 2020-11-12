@@ -44,6 +44,18 @@ Route::get('/admin/sentmesg', function () {
     return view('admin_sentmesg');
 });
 
+Route::get('/admin/admin_forum', function () {
+    return view('admin_forum');
+});
+
+Route::get('/admin/admin_remove', function () {
+    return view('admin_remove');
+});
+
+Route::get('/admin/admin_edit', function () {
+    return view('admin_edit');
+});
+
 // message subsystem
 Route::get('/messages', [MessageController::class, 'index'])->name('messages');
 Route::get('/audio-message', [MessageController::class, 'audioMessage'])->name('audio');
