@@ -54,7 +54,7 @@
                     </div>
                     <div class="p-6">
                     <div class="flex items-center">
-                        <div class="ml-4 text-lg leading-7 font-semibold"><a href="/forum" class="underline text-gray-900 dark:text-white">Profilis</a></div>
+                        <div class="ml-4 text-lg leading-7 font-semibold"><a href="/home" class="underline text-gray-900 dark:text-white">Profilis</a></div>
                     </div>
                 </div>
                 <img width="600px" class="mx-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Orange-Whole-%26-Split.jpg/1280px-Orange-Whole-%26-Split.jpg" alt="">
