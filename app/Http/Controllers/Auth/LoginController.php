@@ -56,7 +56,7 @@ class LoginController extends Controller
                 'password' => $request->input('password'),
             ]
         )) {
-            return redirect()->route('home');
+            return redirect()->intended('home');
         } else {
             return redirect()->route('login')->with('error', 'Username and Password combination is wrong.');
         }
