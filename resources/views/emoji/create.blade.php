@@ -1,10 +1,10 @@
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Create Emoji</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset('css/emoji.css')}}">
     <script src="{{asset('js/emoji.js')}}"></script>
@@ -46,10 +46,10 @@
             <button type="button" value="#ffffff"></button>
         </div>
         <div class="brushes">
-            <button type="button" value="1"></button>
             <button type="button" value="3"></button>
-            <button type="button" value="4"></button>
             <button type="button" value="5"></button>
+            <button type="button" value="10"></button>
+            <button type="button" value="15"></button>
         </div>
         <div class="buttons">
             <button id="cancel" type="button">Cancel</button>

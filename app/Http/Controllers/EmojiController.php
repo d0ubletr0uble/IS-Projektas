@@ -16,19 +16,32 @@ class EmojiController extends Controller
 
     public function store(Request $request)
     {
-//        return $request->input('name');
+        $request->validate(
+            [
+                'name' => 'required',
+                'emoji' => 'required'
+            ]
+        );
+
         $img = $request->input('emoji');
         $img = str_replace('data:image/png;base64,', '', $img);
         $img = str_replace(' ', '+', $img);
         $img = base64_decode($img);
-        $filepath = 'emoji'.time().'.jpg';
-        Storage::put($filepath, $img);
+        $fileName = 'emoji' . time() . '.jpg';
+        Storage::put('public/' . $fileName, $img); // store image of emoji on disk
         Emoji::create([
-            'name' => '[:'.$request->input('name').':]',
-            'link' => $filepath,
+            'name' => '[:' . $request->input('name') . ':]',
+            'link' => $fileName,
             'user_id' => Auth::id()
         ]);
+    }
 
-
+    public function destroy(Emoji $emoji)
+    {
+        if ($emoji->user_id == Auth::id()) // if user owns emoji
+        {
+            Storage::delete('public/' . $emoji->link); //delete actual image
+            $emoji->delete(); // delete database row
+        }
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Emoji;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -13,7 +15,8 @@ class MessageController extends Controller
 
     public function index()
     {
-        return view('messages');
+        $emojis = Emoji::where('user_id', Auth::id())->get();
+        return view('messages', compact('emojis'));
     }
 
     public function audioMessage()

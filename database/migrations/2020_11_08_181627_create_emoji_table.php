@@ -23,6 +23,7 @@ CreateEmojiTable extends Migration
             $table->string('name');
             $table->string('link');
             $table->foreignId('user_id')->constrained();
+            $table->unique(['name', 'user_id']);
         });
     }
 
