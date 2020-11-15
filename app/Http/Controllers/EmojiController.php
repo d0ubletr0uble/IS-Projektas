@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Storage;
 
 class EmojiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create()
     {
         return view('emoji.create');
