@@ -33,12 +33,13 @@ class EmojiController extends Controller
         $img = str_replace(' ', '+', $img);
         $img = base64_decode($img);
         $fileName = 'emoji' . time() . '.jpg';
-        Storage::put('public/' . $fileName, $img); // store image of emoji on disk
-        Emoji::create([
+        $emoji = Emoji::create([
             'name' => '[:' . $request->input('name') . ':]',
             'link' => $fileName,
             'user_id' => Auth::id()
         ]);
+        if ($emoji->exists())
+            Storage::put('public/' . $fileName, $img); // store image of emoji on disk
     }
 
     public function destroy(Emoji $emoji)
