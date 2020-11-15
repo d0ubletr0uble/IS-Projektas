@@ -427,7 +427,7 @@
             </div>
             <div class="p-6">
                 <div class="flex items-center">
-                    <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{route('messages')}}"
+                    <div class="ml-4 text-lg leading-7 font-semibold"><a href="/messages"
                             class="underline text-gray-900 dark:text-white">Žinučių posistemis</a></div>
                 </div>
             </div>

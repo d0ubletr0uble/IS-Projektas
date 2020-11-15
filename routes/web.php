@@ -57,9 +57,10 @@ Route::get('/admin/admin_edit', function () {
 });
 
 // message subsystem
-Route::get('/messages', [MessageController::class, 'index'])->name('messages');
-Route::get('/audio-message', [MessageController::class, 'audioMessage'])->name('audio');
-Route::get('/new-emoji', [EmojiController::class, 'createEmoji'])->name('create-emoji');
+Route::get('/messages', [MessageController::class, 'index']);
+Route::get('/audio-message', [MessageController::class, 'audioMessage']);
+Route::get('/messages/emoji/create', [EmojiController::class, 'create']);
+Route::post('/messages/emoji', [EmojiController::class, 'store']);
 
 Route::get('/messages/edit', function () {
     return view('edit');

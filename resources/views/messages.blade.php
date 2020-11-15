@@ -201,7 +201,7 @@
 <!--                                        <input type="submit">-->
                                     </form>
                                     </li>
-                                    <li><a href="{{route('audio')}}"><i class="fas fa-volume-up"></i>Įrašyti audio</a></li>
+                                    <li><a href="/audio"><i class="fas fa-volume-up"></i>Įrašyti audio</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -213,7 +213,7 @@
                                 <ul>
                                     <li>Emoji meniu</li>
                                     <li>😀 <a href="#" onclick="confirm('Ar tikrai norite ištrynti pasirinktą emoji?')">&nbsp;&nbsp;x</a></li>
-                                    <li><a class="btn btn-primary" href="{{route('create-emoji')}}">+</a></li>
+                                    <li><a class="btn btn-primary" href="/messages/emoji/create">+</a></li>
                                 </ul>
 
                             </div>
