@@ -39,7 +39,7 @@ class EmojiController extends Controller
             'user_id' => Auth::id()
         ]);
         if ($emoji->exists())
-            Storage::put('public/' . $fileName, $img); // store image of emoji on disk
+            Storage::put('public/emoji/' . $fileName, $img); // store image of emoji on disk
     }
 
     public function destroy(Emoji $emoji)
