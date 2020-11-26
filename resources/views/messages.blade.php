@@ -221,9 +221,10 @@
                                 <ul>
                                     <li><i class="fas"></i>Žinutės tipo meniu</li>
                                     <li><i class="fas fa-image"></i>Įkelti paveikslėlį
-                                        <form action="/action_page.php">
+                                        <form action="/messages/photo" method="post" enctype="multipart/form-data">
+                                            @csrf
                                             <input type="file" id="myFile" name="filename">
-                                            <!--                                        <input type="submit">-->
+                                            <input type="submit" value="Send">
                                         </form>
                                     </li>
                                     <li><a href="/audio"><i class="fas fa-volume-up"></i>Įrašyti audio</a></li>
@@ -233,22 +234,15 @@
                         <textarea id="input" class="form-control type_msg"
                                   placeholder="Type your message..."></textarea>
                         <div class="input-group-append">
-                            <!--                            <span class="input-group-text"><i class="fas fa-smile-wink"></i></span>-->
                             <li id="action_menu_btn2" class="input-group-text btn"><i class="fas fa-smile-wink"></i>
                             </li>
                             <div id="action_menu2" class="action_menu">
-                                {{--                                <ul>--}}
-                                {{--                                    <li>Emoji meniu</li>--}}
-                                {{--                                    <li>😀 <a href="#" onclick="confirm('Ar tikrai norite ištrynti pasirinktą emoji?')">&nbsp;&nbsp;x</a></li>--}}
-                                {{--                                    <li><a class="btn btn-primary" href="/messages/emoji/create">+</a></li>--}}
-                                {{--                                </ul>--}}
-
                                 <div class="grid-container">
                                     @foreach($emojis as $emoji)
                                         <div class="grid-item">
                                             <a class="delete" href="{{$emoji->id}}">X</a>
                                             <a class="emoji" href="{{$emoji->name}}"><img
-                                                    src="{{asset('storage/'.$emoji->link)}}" width="50px"></a>
+                                                    src="{{asset('storage/emoji/'.$emoji->link)}}" width="50px"></a>
                                         </div>
                                     @endforeach
                                     <div class="grid-item">
@@ -264,7 +258,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>

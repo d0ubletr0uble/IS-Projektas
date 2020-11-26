@@ -62,6 +62,8 @@ Route::get('/audio-message', [MessageController::class, 'audioMessage']);
 Route::get('/messages/emoji/create', [EmojiController::class, 'create']);
 Route::post('/messages/emoji', [EmojiController::class, 'store']);
 Route::delete('messages/emoji/{emoji}', [EmojiController::class, 'destroy']);
+Route::post('/messages/photo', [MessageController::class, 'storePhoto']);
+
 
 Route::get('/messages/edit', function () {
     return view('edit');
