@@ -95,13 +95,20 @@
                 <th scope="col">Sukūrimo data</th>
             </tr>
         </thead>
+        </table><br><br>
             <tr>
-                <th><a class="underline"  href="/forum/test">Test</a></th>
-                <th><input type='date' id='hasta' value='<?php echo date('Y-m-d');?>'></th>
+                @if(count($tema)>0)
+                    @foreach($tema as $temos)
+                        <br>
+                        <ul class="list-group">
+                        <th>    <li class="list-group-item"> {{$temos->pavadinimas}}</li></th>
+                        <th>    <li class="list-group-item"> {{$temos->created_at}}</li></th>
+                        </ul>
+
+                    @endforeach
+                @endif
             </tr>
 
-
-
-</div>
+    </div>
 </body>
 </html>

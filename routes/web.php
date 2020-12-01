@@ -80,21 +80,25 @@ Route::get('/messages/edit/removeuser', function () {
 Route::get('/messages/edit/changename', function () {
     return view('edit_changename');
 });
-Route::get('/forum', function () {
-    return view('forum');
+
+
+
+
+
+Route::prefix('forum')->name('Forumas')->group(function(){
+
+    Route::get('', 'App\Http\Controllers\TemosController@index');
+
+    Route::get('/addtopic', function () { return view('Forumas.forum_addtopic');});
+
+    Route::POST('/addtopic/confirmed','App\Http\Controllers\TemosController@submit');
+
+    Route::get('/test', function () {return view('Forumas.forum_test');});
+
+    Route::get('/search', function () {return view('Forumas.forum_search');});
+
 });
 
-Route::get('/forum/addtopic', function () {
-    return view('forum_addtopic');
-});
-
-Route::get('/forum/test', function () {
-    return view('forum_test');
-});
-
-Route::get('/forum/search', function () {
-    return view('forum_search');
-});
 
 
 // don't touch this function
