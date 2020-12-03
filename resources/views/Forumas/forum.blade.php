@@ -101,8 +101,9 @@
                     @foreach($tema as $temos)
                         <br>
                         <ul class="list-group">
-                        <th>    <li class="list-group-item"> {{$temos->pavadinimas}}</li></th>
-                        <th>    <li class="list-group-item"> {{$temos->created_at}}</li></th>
+                            <th>    <li class="list-group-item">Vartotojas: {{$temos->User->first_name}}</li></th>
+                        <th>    <li class="list-group-item">Temos pavadinimas: {{$temos->pavadinimas}}</li></th>
+                        <th>    <li class="list-group-item">Temos sukūrimo data: {{$temos->created_at}}</li></th>
                         </ul>
 
                     @endforeach
