@@ -16,45 +16,18 @@ use App\Http\Controllers\EmojiController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/admin', function () {
-    return view('admin');
-});
-
-Route::get('/admin/block', function () {
-    return view('admin_block');
-});
-
-Route::get('/admin/unblock', function () {
-    return view('admin_unblock');
-});
-
-Route::get('/admin/statistics', function () {
-    return view('admin_statistics');
-});
-
-Route::get('/admin/logincnt', function () {
-    return view('admin_logincnt');
-});
-
-Route::get('/admin/sentmesg', function () {
-    return view('admin_sentmesg');
-});
-
-Route::get('/admin/admin_forum', function () {
-    return view('admin_forum');
-});
-
-Route::get('/admin/admin_remove', function () {
-    return view('admin_remove');
-});
-
-Route::get('/admin/admin_edit', function () {
-    return view('admin_edit');
-});
+Route::get('/', function () {return view('welcome');});
+// admin
+Route::get('/admin', function () {return view('admin');})->middleware('auth');
+Route::get('/admin/block', function () {return view('admin_block');})->middleware('auth');
+Route::get('/admin/unblock', function () {return view('admin_unblock');})->middleware('auth');
+Route::get('/admin/statistics', function () {return view('admin_statistics');})->middleware('auth');
+Route::get('/admin/logincnt', function () {return view('admin_logincnt');})->middleware('auth');
+Route::get('/admin/sentmesg', function () {return view('admin_sentmesg');})->middleware('auth');
+Route::get('/admin/admin_forum', function () {return view('admin_forum');})->middleware('auth');
+Route::get('/admin/admin_remove', function () {return view('admin_remove');})->middleware('auth');
+Route::get('/admin/admin_edit', function () {return view('admin_edit');})->middleware('auth');
+// admin
 
 // message subsystem
 Route::get('/messages', [MessageController::class, 'index']);
@@ -80,8 +53,6 @@ Route::get('/messages/edit/removeuser', function () {
 Route::get('/messages/edit/changename', function () {
     return view('edit_changename');
 });
-
-
 
 
 
