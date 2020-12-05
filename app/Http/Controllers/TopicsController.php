@@ -56,7 +56,7 @@ class TopicsController extends Controller
 
     public function update(Request $request,$id){
 
-        
+
         $tema = topics::findOrFail($id);
 
         $pavadinimas = $request->input('pavadinimas');

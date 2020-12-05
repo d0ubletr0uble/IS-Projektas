@@ -7,16 +7,14 @@
         {!! Form::open(['action' => ['App\Http\Controllers\TopicsController@update',$tema->id], 'method'=>'POST']) !!}
         @csrf
         {{Form::hidden('_method','PATCH')}}
+
         <div class="form-group">
-            {{Form::label('vardas', 'Pavadinimas')}}
+            {{Form::label('pavadinimas', 'Pavadinimas')}}
+            {{Form::text('pavadinimas', $tema->pavadinimas, ['class' => 'form-control', 'placeholder' => 'Pavadinimas'])}}
         </div>
         <div class="form-group">
-            {{Form::label('vardas', 'Pavadinimas')}}
-            {{Form::text('vardas', $tema->pavadinimas, ['class' => 'form-control', 'placeholder' => 'Vardas'])}}
-        </div>
-        <div class="form-group">
-            {{Form::label('media', 'Media')}}
-            {{Form::textarea('media', $tema->tekstas, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Media'])}}
+            {{Form::label('tekstas', 'Tekstas')}}
+            {{Form::textarea('tekstas', $tema->tekstas, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Tekstas'])}}
         </div>
 
 
