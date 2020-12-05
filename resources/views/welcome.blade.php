@@ -419,12 +419,15 @@
         @endif
 
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+            @if(auth()->check() && auth()->user()->is_admin == 1)
             <div class="p-6">
                 <div class="flex items-center">
                     <div class="ml-4 text-lg leading-7 font-semibold"><a href="/admin"
                             class="underline text-gray-900 dark:text-white">Admin langas</a></div>
                 </div>
             </div>
+            @else
+            @endif
             <div class="p-6">
                 <div class="flex items-center">
                     <div class="ml-4 text-lg leading-7 font-semibold"><a href="/messages"

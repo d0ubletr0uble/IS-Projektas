@@ -405,6 +405,8 @@
     </style>
 </head>
 
+@if(auth()->user()->is_admin == 1)
+
 <body class="antialiased">
     <div class="ml-4 text-lg leading-7 font-semibold">Admin page</div>
     <div class="ml-4 text-lg leading-7 font-semibold"><a href="/"
@@ -412,14 +414,6 @@
 
     <div
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-        <div class="card-body">
-            @if(auth()->user()->is_admin == 1)
-            <a href="{{url('admin/routes')}}">Admin</a>
-            @else
-            <div class=”panel-heading”>Normal User</div>
-            @endif
-        </div>
-
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                 <div class="grid grid-cols-2 md:grid-cols-1">
@@ -514,6 +508,10 @@
             </div>
         </div>
     </div>
+
 </body>
+@else
+{{-- {{ \App\Http\Middleware\IsAdmin::handle()}} --}}
+@endif
 
 </html>

@@ -28,7 +28,7 @@ class HomeController extends Controller
         return view('home', compact('user'));
     }
 
-    public function adminHome(){
-        return view('adminHome');
+    public static function AdminMove(){
+        return view('admin');
     }
 }

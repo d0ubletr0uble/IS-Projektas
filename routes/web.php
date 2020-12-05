@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\EmojiController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,6 @@ use App\Http\Controllers\EmojiController;
 
 Route::get('/', function () {return view('welcome');});
 // admin
-Route::get('/admin', function () {return view('admin');})->middleware('auth');
 Route::get('/admin/block', function () {return view('admin_block');})->middleware('auth');
 Route::get('/admin/unblock', function () {return view('admin_unblock');})->middleware('auth');
 Route::get('/admin/statistics', function () {return view('admin_statistics');})->middleware('auth');
@@ -27,7 +27,7 @@ Route::get('/admin/sentmesg', function () {return view('admin_sentmesg');})->mid
 Route::get('/admin/admin_forum', function () {return view('admin_forum');})->middleware('auth');
 Route::get('/admin/admin_remove', function () {return view('admin_remove');})->middleware('auth');
 Route::get('/admin/admin_edit', function () {return view('admin_edit');})->middleware('auth');
-Route::get('admin/home',[HomeController::class,'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::get('/admin', [HomeController::class, 'AdminMove'])->name('admin')->middleware('is_admin');
 // admin
 
 // message subsystem
