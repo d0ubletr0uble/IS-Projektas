@@ -59,11 +59,18 @@ Route::get('/messages/edit/changename', function () {
 
 Route::prefix('forum')->name('Forumas')->group(function(){
 
-    Route::get('', 'App\Http\Controllers\TemosController@index');
+    Route::get('', 'App\Http\Controllers\TopicsController@index')->name('.index');
 
     Route::get('/addtopic', function () { return view('Forumas.forum_addtopic');});
 
-    Route::POST('/addtopic/confirmed','App\Http\Controllers\TemosController@submit');
+    Route::POST('/addtopic/confirmed','App\Http\Controllers\TopicsController@submit');
+
+
+    Route::delete('/{id}', 'App\Http\Controllers\TopicsController@destroy');
+
+    Route::get('/{id}/edit', 'App\Http\Controllers\TopicsController@edit')->name('.edit');
+
+    Route::match(['put','patch'],'/{id}', 'App\Http\Controllers\TopicsController@update')->name('.update');
 
     Route::get('/test', function () {return view('Forumas.forum_test');});
 
