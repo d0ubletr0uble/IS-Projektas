@@ -50,6 +50,8 @@ class TopicsController extends Controller
 
     public function destroy($id)
     {
+
+
         $tema = topics::findOrFail($id);
 
         $tema->delete();

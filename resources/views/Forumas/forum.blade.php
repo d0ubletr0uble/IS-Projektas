@@ -99,6 +99,7 @@
                         <th>    <li class="list-group-item">Temos sukūrimo data: {{$temos->created_at}}</li></th>
                         </ul>
 
+                        @if(Auth::user()->id == $temos->user_id)
                         <a> {!! Form::open(['action' => ['App\Http\Controllers\TopicsController@destroy',$temos->id], 'method'=>'POST']) !!}
                             @csrf
                             {{Form::hidden('_method','DELETE')}}
@@ -106,6 +107,9 @@
                             {{Form::submit('Ištrinti', ['class'=>'btn btn-danger'])}}
                             {!! Form::close() !!}
                         </a>
+                        
+                        @endif
+
 
 
                     @endforeach
