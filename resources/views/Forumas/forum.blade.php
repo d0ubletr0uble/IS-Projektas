@@ -88,23 +88,25 @@
     </div>
 
 
-        <table class="center table-bordered table">
-        <thead>
-            <tr>
-                <th style="height: 40px; width: 200px" scope="col">Tema</th>
-                <th scope="col">Sukūrimo data</th>
-            </tr>
-        </thead>
-        </table><br><br>
+
             <tr>
                 @if(count($tema)>0)
                     @foreach($tema as $temos)
                         <br>
                         <ul class="list-group">
-                            <th>    <li class="list-group-item">Vartotojas: {{$temos->User->first_name}}</li></th>
+                            <th>    <li class="list-group-item">Vartotojas: {{$temos->username}}</li></th>
                         <th>    <li class="list-group-item">Temos pavadinimas: {{$temos->pavadinimas}}</li></th>
                         <th>    <li class="list-group-item">Temos sukūrimo data: {{$temos->created_at}}</li></th>
                         </ul>
+
+                        <a> {!! Form::open(['action' => ['App\Http\Controllers\TopicsController@destroy',$temos->id], 'method'=>'POST']) !!}
+                            @csrf
+                            {{Form::hidden('_method','DELETE')}}
+
+                            {{Form::submit('Ištrinti', ['class'=>'btn btn-danger'])}}
+                            {!! Form::close() !!}
+                        </a>
+
 
                     @endforeach
                 @endif
