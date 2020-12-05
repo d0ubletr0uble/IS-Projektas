@@ -48,6 +48,27 @@ class TopicsController extends Controller
         return view('Forumas.forum') -> with('tema', $tema);
     }
 
+    public function edit($id){
+
+        $tema = topics::find($id);
+        return view('Forumas.edit',compact('tema')); //->with('messages','id');
+    }
+
+    public function update(Request $request,$id){
+
+        
+        $tema = topics::findOrFail($id);
+
+        $pavadinimas = $request->input('pavadinimas');
+        $tekstas = $request->input('tekstas');
+        $tema->pavadinimas = $pavadinimas;
+        $tema->tekstas = $tekstas;
+
+        $tema->save();
+        return redirect()->route('Forumas.index')->with('status',' informacija atnaujinta');
+
+    }
+
     public function destroy($id)
     {
 

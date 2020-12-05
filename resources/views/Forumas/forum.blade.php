@@ -100,6 +100,11 @@
                         </ul>
 
                         @if(Auth::user()->id == $temos->user_id)
+
+                        <a href="{{route('Forumas.edit',$temos->id)}}"><button>Redaguoti</button></a>
+
+
+
                         <a> {!! Form::open(['action' => ['App\Http\Controllers\TopicsController@destroy',$temos->id], 'method'=>'POST']) !!}
                             @csrf
                             {{Form::hidden('_method','DELETE')}}
@@ -107,7 +112,6 @@
                             {{Form::submit('Ištrinti', ['class'=>'btn btn-danger'])}}
                             {!! Form::close() !!}
                         </a>
-                        
                         @endif
 
 

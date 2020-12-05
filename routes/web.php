@@ -68,6 +68,9 @@ Route::prefix('forum')->name('Forumas')->group(function(){
 
     Route::delete('/{id}', 'App\Http\Controllers\TopicsController@destroy');
 
+    Route::get('/{id}/edit', 'App\Http\Controllers\TopicsController@edit')->name('.edit');
+
+    Route::match(['put','patch'],'/{id}', 'App\Http\Controllers\TopicsController@update')->name('.update');
 
     Route::get('/test', function () {return view('Forumas.forum_test');});
 
