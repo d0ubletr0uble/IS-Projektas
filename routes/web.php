@@ -27,6 +27,7 @@ Route::get('/admin/sentmesg', function () {return view('admin_sentmesg');})->mid
 Route::get('/admin/admin_forum', function () {return view('admin_forum');})->middleware('auth');
 Route::get('/admin/admin_remove', function () {return view('admin_remove');})->middleware('auth');
 Route::get('/admin/admin_edit', function () {return view('admin_edit');})->middleware('auth');
+Route::get('admin/home',[HomeController::class,'adminHome'])->name('admin.home')->middleware('is_admin');
 // admin
 
 // message subsystem
