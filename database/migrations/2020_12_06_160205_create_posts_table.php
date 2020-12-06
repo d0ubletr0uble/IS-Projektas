@@ -20,6 +20,8 @@ class CreatePostsTable extends Migration
             $table->timestamps();
             $table->string('username');
         });
+
+        Schema::dropIfExists('posts');
     }
 
     /**

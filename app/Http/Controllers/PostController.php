@@ -33,10 +33,10 @@ class PostController extends Controller
         $post =  new Post;
         $post->title = $request->get('title');
         $post->body = $request->get('body');
-        $post->name = Auth::user()->name;
+        $post->username = Auth::user()->username;
         $post->save();
 
-        return redirect('Forumas.posts');
+        return redirect()->route('Forumas.posts');
 
     }
 
@@ -44,7 +44,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        return view('show', compact('post'));
+        return view('Forumas.show', compact('post'));
     }
 
     public function edit($id){

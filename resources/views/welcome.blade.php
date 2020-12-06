@@ -436,7 +436,7 @@
             </div>
             <div class="p-6">
                 <div class="flex items-center">
-                    <div class="ml-4 text-lg leading-7 font-semibold"><a href="/forum"
+                    <div class="ml-4 text-lg leading-7 font-semibold"><a href="/forum/posts"
                             class="underline text-gray-900 dark:text-white">Turinio valdymas</a></div>
                 </div>
 

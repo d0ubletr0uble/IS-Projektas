@@ -19,7 +19,9 @@
                             </div>
                             <div class="form-group">
                                 <input type="submit" class="btn btn-success" />
+                                <a href="{{ route('Forumas.posts') }}" class="btn btn-primary">Grįžti atgal</a>
                             </div>
+
                         </form>
                     </div>
                 </div>
