@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\EmojiController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,15 +20,18 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {return view('welcome');});
 // admin
-Route::get('/admin/block', function () {return view('admin_block');})->middleware('auth');
-Route::get('/admin/unblock', function () {return view('admin_unblock');})->middleware('auth');
-Route::get('/admin/statistics', function () {return view('admin_statistics');})->middleware('auth');
-Route::get('/admin/logincnt', function () {return view('admin_logincnt');})->middleware('auth');
-Route::get('/admin/sentmesg', function () {return view('admin_sentmesg');})->middleware('auth');
-Route::get('/admin/admin_forum', function () {return view('admin_forum');})->middleware('auth');
-Route::get('/admin/admin_remove', function () {return view('admin_remove');})->middleware('auth');
-Route::get('/admin/admin_edit', function () {return view('admin_edit');})->middleware('auth');
-Route::get('/admin', [HomeController::class, 'AdminMove'])->name('admin')->middleware('is_admin');
+Route::prefix('admin')->group(function () { 
+    Route::get('/block', function () {return view('admin_block');})->middleware('is_admin');
+    Route::get('/unblock', function () {return view('admin_unblock');})->middleware('is_admin');
+    Route::get('/statistics', function () {return view('admin_statistics');})->middleware('is_admin');
+    Route::get('/logincnt', function () {return view('admin_logincnt');})->middleware('is_admin');
+    Route::get('/sentmesg', function () {return view('admin_sentmesg');})->middleware('is_admin');
+    Route::get('/admin_forum', function () {return view('admin_forum');})->middleware('is_admin');
+    Route::get('/admin_remove', function () {return view('admin_remove');})->middleware('is_admin');
+    Route::get('/admin_edit', function () {return view('admin_edit');})->middleware('is_admin');
+    Route::get('', [HomeController::class, 'AdminMove'])->name('admin')->middleware('is_admin');
+    Route::get('', 'App\Http\Controllers\PagesController@UserList')->name('admin')->middleware('is_admin');
+});
 // admin
 
 // message subsystem
