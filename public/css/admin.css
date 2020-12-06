@@ -3,19 +3,61 @@ html {
     -webkit-text-size-adjust: 100%
 }
 
-td{
+.tdl{
+    position:relative;
     color:#FF0000;
-    
+    text-align: center;
+    white-space: nowrap;
 }
+.tdr{
+    position:relative;
+    color:#FF0000;
+    left:6px;
+    white-space: nowrap;
+}
+tr{
+    position:relative;
+    line-height: 3rem;
+}
+
+.if{
+    position:relative;
+    right:52px;
+}
+.if:hover{
+    color:white;
+}
+
+.ic{
+    position:relative;
+    right:32px;
+}
+.ic:hover{
+    color:white;
+}
+
+.il{
+    position:relative;
+    right:50px;
+}
+.il:hover{
+    color:white;
+}
+
 .tdx{
     color:#FF0000;
-    width: 115px;
+    width:50%;
+}
+
+.ix{
+    text-align: center;
 }
 
 th{
     color: #edf2f7;
     line-height: 1.75rem;
     text-align: center;
+    white-space: nowrap;
 }
 
 body {
@@ -164,7 +206,7 @@ video {
 }
 
 .ml-4 {
-    margin-left: 1rem
+    margin-left: 0.2rem
 }
 
 .mt-8 {
@@ -180,7 +222,7 @@ video {
 }
 
 .max-w-6xl {
-    max-width: 72rem
+    max-width: 75rem
 }
 
 .min-h-screen {
@@ -192,7 +234,8 @@ video {
 }
 
 .p-6 {
-    padding: 1.5rem
+    padding: 2rem;
+    width:50%;
 }
 
 .py-4 {

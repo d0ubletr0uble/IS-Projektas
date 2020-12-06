@@ -41,39 +41,49 @@
                                     <th>Birthday</th>
                                     <th>Username</th>
                                     <th>Email</th>
+                                    <th>Block/Unblock</th>
+                                    <th>Statistics</th>
+                                    <th>Login count</th>
+                                    <th>Sent messages</th>
                                 </thead>
                                 <tbody>
                                     @foreach($users as $row)
                                     <tr>
-                                        <td>{{$row->id}}</td>
-                                        <td>{{$row->first_name}}</td>
-                                        <td>{{$row->last_name}}</td>
-                                        <td>{{$row->birthday}}</td>
-                                        <td>{{$row->username}}</td>
-                                        <td>{{$row->email}}</td>
+                                        <td class="tdl">{{$row->id}}</td>
+                                        <td class="tdl">{{$row->first_name}}</td>
+                                        <td class="tdl">{{$row->last_name}}</td>
+                                        <td class="tdl">{{$row->birthday}}</td>
+                                        <td class="tdl">{{$row->username}}</td>
+                                        <td class="tdl">{{$row->email}}</td>
+
                                         @if($row->is_blocked ==0)
-                                        <td>
-                                            <a href="{{route('admin_block', $row->id)}}"
-                                                class="btn btn-primary">Block</a>
+                                        <td class="tdr">
+                                            <a href="{{route('admin_block', $row->id)}}" class="btn btn-primary"> <i
+                                                    class="fas fa-user-slash if"></i>
+                                            </a>
                                         </td>
+
                                         @else
-                                        <td>
-                                            <a href="{{route('admin_unblock', $row->id)}}"
-                                                class="btn btn-primary">Unblock</a>
+                                        <td class="tdr">
+                                            <a href="{{route('admin_unblock', $row->id)}}" class="btn btn-primary"> <i
+                                                    class="fas fa-user if"></i></a>
                                         </td>
+
                                         @endif
-                                        <td>
-                                            <a href="{{route('admin_statistics', $row->id)}}"
-                                                class="btn btn-primary">Statistics</a>
+                                        <td class="tdr">
+                                            <a href="{{route('admin_statistics', $row->id)}}" class="btn btn-primary"><i
+                                                    class="fas fa-info-circle ic"></i></a>
                                         </td>
+
                                         <td class="tdx">
-                                            <a href="{{route('admin_logincnt', $row->id)}}"
-                                                class="btn btn-primary">Login
-                                                count</a>
+                                            <a href="{{route('admin_logincnt', $row->id)}}" class="btn btn-primary"> <i
+                                                    class="far fa-address-book ic"></i>
+                                            </a>
                                         </td>
+
                                         <td class="tdx">
-                                            <a href="{{route('admin_sentmesg', $row->id)}}" class="btn btn-primary">Sent
-                                                messages</a>
+                                            <a href="{{route('admin_sentmesg', $row->id)}}" class="btn btn-primary"><i
+                                                    class="far fa-comment-dots il"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
