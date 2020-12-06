@@ -20,17 +20,17 @@ use App\Http\Controllers\PagesController;
 
 Route::get('/', function () {return view('welcome');});
 // admin
-Route::prefix('admin')->group(function () { 
+Route::prefix('admin')->group(function () {
     Route::get('/block/{id}', function ($id) {return view('admin_block');})->name('admin_block')->middleware('is_admin');
     Route::get('/unblock/{id}', function ($id) {return view('admin_unblock');})->name('admin_unblock')->middleware('is_admin');
     Route::get('/statistics/{id}', function ($id) {return view('admin_statistics');})->name('admin_statistics')->middleware('is_admin');
     Route::get('/logincnt/{id}', function ($id) {return view('admin_logincnt');})->name('admin_logincnt')->middleware('is_admin');
     Route::get('/sentmesg/{id}', function ($id) {return view('admin_sentmesg');})->name('admin_sentmesg')->middleware('is_admin');
-    
+
     Route::get('/admin_forum', function () {return view('admin_forum');})->name('admin_forum')->middleware('is_admin');
     Route::get('/admin_remove', function () {return view('admin_remove');})->name('admin_remove')->middleware('is_admin');
     Route::get('/admin_edit', function () {return view('admin_edit');})->name('admin_edit')->middleware('is_admin');
-    
+
     Route::get('', [HomeController::class, 'AdminMove'])->name('admin')->middleware('is_admin');
     Route::get('', 'App\Http\Controllers\PagesController@UserList')->name('admin')->middleware('is_admin');
 });
@@ -66,22 +66,23 @@ Route::get('/messages/edit/changename', function () {
 Route::prefix('forum')->name('Forumas')->group(function(){
 
     Route::get('', 'App\Http\Controllers\TopicsController@index')->name('.index');
-
     Route::get('/addtopic', function () { return view('Forumas.forum_addtopic');});
-
     Route::POST('/addtopic/confirmed','App\Http\Controllers\TopicsController@submit');
-
-
     Route::delete('/{id}', 'App\Http\Controllers\TopicsController@destroy');
-
     Route::get('/{id}/edit', 'App\Http\Controllers\TopicsController@edit')->name('.edit');
-
     Route::match(['put','patch'],'/{id}', 'App\Http\Controllers\TopicsController@update')->name('.update');
-
     Route::get('/test', function () {return view('Forumas.forum_test');});
-
     Route::get('/search', function () {return view('Forumas.forum_search');});
 
+
+    Route::get('/posts', 'App\Http\Controllers\PostController@index')->name('.posts');
+    Route::get('/post/create', 'App\Http\Controllers\PostController@create')->name('.postcreate');
+    Route::post('/post/store', 'App\Http\Controllers\PostController@store')->name('.poststore');
+    Route::get('/post/show/{id}', 'App\Http\Controllers\PostController@show')->name('.postshow');
+    Route::post('/comment/store', 'App\Http\Controllers\CommentController@store')->name('.commentadd');
+    Route::get('/post/edit/{id}', 'App\Http\Controllers\PostController@edit')->name('.postedit');
+    Route::delete('/post/delete/{id}', 'App\Http\Controllers\PostController@destroy')->name('.postdestroy');
+    Route::delete('/comment/delete/{id}', 'App\Http\Controllers\CommentController@destroy')->name('.commentdestroy');
 });
 
 
