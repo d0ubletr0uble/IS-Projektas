@@ -28,7 +28,7 @@
 
                     <div class="p-6">
                         <div class="flex items-center">
-                            <div class="ml-4 text-lgg text-gray-200 leading-7 font-semibold">
+                            <div class="ml-4 text-lgg h-5 text-gray-200 leading-7 font-semibold">
                                 Administratoriaus vartotojų parinkimo langas
                             </div>
                         </div>
@@ -51,17 +51,29 @@
                                         <td>{{$row->birthday}}</td>
                                         <td>{{$row->username}}</td>
                                         <td>{{$row->email}}</td>
+                                        @if($row->is_blocked ==0)
                                         <td>
-                                            <a href="#" class="btn btn-success">Action</a>
+                                            <a href="{{route('admin_block', $row->id)}}"
+                                                class="btn btn-primary">Block</a>
                                         </td>
+                                        @else
                                         <td>
-                                            <a href="#" class="btn btn-success">Action</a>
+                                            <a href="{{route('admin_unblock', $row->id)}}"
+                                                class="btn btn-primary">Unblock</a>
                                         </td>
+                                        @endif
                                         <td>
-                                            <a href="#" class="btn btn-success">Action</a>
+                                            <a href="{{route('admin_statistics', $row->id)}}"
+                                                class="btn btn-primary">Statistics</a>
                                         </td>
-                                        <td>
-                                            <a href="#" class="btn btn-success">Action</a>
+                                        <td class="tdx">
+                                            <a href="{{route('admin_logincnt', $row->id)}}"
+                                                class="btn btn-primary">Login
+                                                count</a>
+                                        </td>
+                                        <td class="tdx">
+                                            <a href="{{route('admin_sentmesg', $row->id)}}" class="btn btn-primary">Sent
+                                                messages</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -136,7 +148,7 @@
                     </div>
                     <div class="p-6">
                         <div class="flex items-center">
-                            <div class="ml-4 text-lgg text-gray-200 leading-7 font-semibold">
+                            <div class="ml-4 text-lgg h-5 text-gray-200 leading-7 font-semibold">
                                 Admin forumas
                             </div>
 

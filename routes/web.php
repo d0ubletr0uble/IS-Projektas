@@ -21,14 +21,16 @@ use App\Http\Controllers\PagesController;
 Route::get('/', function () {return view('welcome');});
 // admin
 Route::prefix('admin')->group(function () { 
-    Route::get('/block', function () {return view('admin_block');})->middleware('is_admin');
-    Route::get('/unblock', function () {return view('admin_unblock');})->middleware('is_admin');
-    Route::get('/statistics', function () {return view('admin_statistics');})->middleware('is_admin');
-    Route::get('/logincnt', function () {return view('admin_logincnt');})->middleware('is_admin');
-    Route::get('/sentmesg', function () {return view('admin_sentmesg');})->middleware('is_admin');
-    Route::get('/admin_forum', function () {return view('admin_forum');})->middleware('is_admin');
-    Route::get('/admin_remove', function () {return view('admin_remove');})->middleware('is_admin');
-    Route::get('/admin_edit', function () {return view('admin_edit');})->middleware('is_admin');
+    Route::get('/block/{id}', function ($id) {return view('admin_block');})->name('admin_block')->middleware('is_admin');
+    Route::get('/unblock/{id}', function ($id) {return view('admin_unblock');})->name('admin_unblock')->middleware('is_admin');
+    Route::get('/statistics/{id}', function ($id) {return view('admin_statistics');})->name('admin_statistics')->middleware('is_admin');
+    Route::get('/logincnt/{id}', function ($id) {return view('admin_logincnt');})->name('admin_logincnt')->middleware('is_admin');
+    Route::get('/sentmesg/{id}', function ($id) {return view('admin_sentmesg');})->name('admin_sentmesg')->middleware('is_admin');
+    
+    Route::get('/admin_forum', function () {return view('admin_forum');})->name('admin_forum')->middleware('is_admin');
+    Route::get('/admin_remove', function () {return view('admin_remove');})->name('admin_remove')->middleware('is_admin');
+    Route::get('/admin_edit', function () {return view('admin_edit');})->name('admin_edit')->middleware('is_admin');
+    
     Route::get('', [HomeController::class, 'AdminMove'])->name('admin')->middleware('is_admin');
     Route::get('', 'App\Http\Controllers\PagesController@UserList')->name('admin')->middleware('is_admin');
 });
