@@ -33,7 +33,7 @@
                                 </a>
 
                             <td>
-                                <a href="{{ route('Forumas.postshow', $post->id) }}" class="btn btn-warning">Redaguoti</a>
+                                <a href="{{ route('Forumas.postedit', $post->id) }}" class="btn btn-warning">Redaguoti</a>
                             </td>
                                     @endif
 

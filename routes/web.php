@@ -65,15 +65,6 @@ Route::get('/messages/edit/changename', function () {
 
 Route::prefix('forum')->name('Forumas')->group(function(){
 
-    Route::get('', 'App\Http\Controllers\TopicsController@index')->name('.index');
-    Route::get('/addtopic', function () { return view('Forumas.forum_addtopic');});
-    Route::POST('/addtopic/confirmed','App\Http\Controllers\TopicsController@submit');
-    Route::delete('/{id}', 'App\Http\Controllers\TopicsController@destroy');
-    Route::get('/{id}/edit', 'App\Http\Controllers\TopicsController@edit')->name('.edit');
-    Route::match(['put','patch'],'/{id}', 'App\Http\Controllers\TopicsController@update')->name('.update');
-    Route::get('/test', function () {return view('Forumas.forum_test');});
-    Route::get('/search', function () {return view('Forumas.forum_search');});
-
 
     Route::get('/posts', 'App\Http\Controllers\PostController@index')->name('.posts');
     Route::get('/post/create', 'App\Http\Controllers\PostController@create')->name('.postcreate');
@@ -81,8 +72,12 @@ Route::prefix('forum')->name('Forumas')->group(function(){
     Route::get('/post/show/{id}', 'App\Http\Controllers\PostController@show')->name('.postshow');
     Route::post('/comment/store', 'App\Http\Controllers\CommentController@store')->name('.commentadd');
     Route::get('/post/edit/{id}', 'App\Http\Controllers\PostController@edit')->name('.postedit');
+    Route::match(['put','patch'],'/{id}', 'App\Http\Controllers\PostController@update')->name('.postupdate');
+    Route::get('/comment/edit/{id}', 'App\Http\Controllers\CommentController@edit')->name('.commentedit');
+    Route::match(['put','patch'],'/{id}', 'App\Http\Controllers\CommentController@update')->name('.commentupdate');
     Route::delete('/post/delete/{id}', 'App\Http\Controllers\PostController@destroy')->name('.postdestroy');
     Route::delete('/comment/delete/{id}', 'App\Http\Controllers\CommentController@destroy')->name('.commentdestroy');
+
 });
 
 

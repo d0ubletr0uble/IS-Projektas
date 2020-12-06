@@ -6,13 +6,13 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <p>Temos pavadinimas - <b>{{ $post->title }}</b></p>
+                        <h3><p>Temos pavadinimas - <b>{{ $post->title }}</b></p></h3>
                         <p>Vartotojas - <b>{{ $post->username }}</b></p>
                         <p>
                             Tekstas: <br>{{ $post->body }}
                         </p>
                         <hr />
-                        <h4>Visi komentarai:</h4>
+                        <h3>Visi komentarai:</h3>
                         @foreach($post->comments as $comment)
                             <div class="display-comment">
                                 Vartotojas: <strong>{{ $comment->user->username }}</strong>
@@ -27,7 +27,10 @@
                                     {{Form::submit('Ištrinti', ['class'=>'btn btn-danger'])}}
                                     {!! Form::close() !!}
                                 </a>
-                                    @endif
+
+                                <a href="{{ route('Forumas.commentedit', $comment->id) }}" class="btn btn-warning">Redaguoti</a>
+
+                                @endif
                             </td>
                             <hr />
                         @endforeach

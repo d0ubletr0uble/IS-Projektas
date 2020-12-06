@@ -50,7 +50,25 @@ class PostController extends Controller
     public function edit($id){
 
         $post = Post::find($id);
-        return view('Forumas.postedit',compact('post')); //->with('messages','id');
+        return view('Forumas.edit',compact('post')); //->with('messages','id');
+    }
+
+
+    public function update(Request $request,$id){
+
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+        $post = Post::findOrFail($id);
+
+        $title = $request->input('title');
+        $body = $request->input('body');
+        $post->title = $title;
+        $post->body = $body;
+
+        $post->save();
+        return redirect()->route('Forumas.posts')->with('status','Patalpų informacija atnaujinta');
     }
 
     public function destroy($id)

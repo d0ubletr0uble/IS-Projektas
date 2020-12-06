@@ -28,4 +28,25 @@ class CommentController extends Controller
         $comment->delete();
         return redirect()->route('Forumas.posts')->with('status','Pasirinkta patalpa ištrinta');
     }
+
+    public function edit($id){
+
+        $comment = Comment::find($id);
+        return view('Forumas.commentedit',compact('comment')); //->with('messages','id');
+    }
+
+
+    public function update(Request $request,$id){
+
+        $this->validate($request, [
+            'body' => 'required'
+        ]);
+        $comment = Comment::findOrFail($id);
+
+        $body = $request->input('body');
+        $comment->body = $body;
+
+        $comment->save();
+        return redirect()->route('Forumas.posts')->with('status','Patalpų informacija atnaujinta');
+    }
 }
