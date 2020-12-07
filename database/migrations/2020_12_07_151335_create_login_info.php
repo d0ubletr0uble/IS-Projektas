@@ -15,11 +15,10 @@ class CreateLoginInfo extends Migration
     {
         Schema::create('login_info', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->text('country');
             $table->text('device');
             $table->text('browser');
-            $table->date('date');
+            $table->datetime('date');
             $table->text('ip');
             $table->text('os');
             $table->text('provider');
