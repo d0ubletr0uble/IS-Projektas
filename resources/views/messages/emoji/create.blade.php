@@ -52,9 +52,9 @@
             <button type="button" value="15"></button>
         </div>
         <div class="buttons">
-            <button id="cancel" type="button">Cancel</button>
-            <button id="clear" type="button">Clear</button>
-            <button id="save" type="button">Save</button>
+            <button id="cancel" type="button">Atšaukti</button>
+            <button id="clear" type="button">Išvalyti</button>
+            <button id="save" type="button">Išsaugoti</button>
         </div>
     </div>
     <div class="right-block">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Emoji;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -41,15 +42,23 @@ class MessageController extends Controller
 
     public function storeAudio(Request $request)
     {
-//        $request->validate([
-//            'audio' => 'required'
-//        ]);
+        $filename = time() . '.wav';
+        $request->file('audio')->storeAs('audio/', $filename, 'public');
 
-        $request->file('audio')->storeAs('audio/', time() . '.wav', 'public');
-
-        //todo record into database
+        Message::create([
+            'content' => '/storage/audio/' . $filename,
+            'type' => 'audio',
+            'status' => 'sent',
+            'group_id' => 1,
+            'group_member_id' => Auth::id()
+        ]);
 
         return back();
+    }
+
+    public function storeMessage(Request $request)
+    {
+
     }
 
 }

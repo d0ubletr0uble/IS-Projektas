@@ -21,10 +21,10 @@
 <div class="recorder container d-flex justify-content-center rounded" style="background: #cedce7">
     <div class="d-flex flex-column">
         <br>
-        <h2>Record audio message</h2><br>
+        <h2>Audio įrašymo langas</h2><br>
         <i class="fas fa-microphone fa-7x d-flex justify-content-center"></i><br>
-        <button id="start" class="btn btn-primary" onclick="startRecording(this);">Start</button>
-        <button id="stop" class="btn btn-warning" onclick="stopRecording(this);" style="display: none">Stop</button>
+        <button id="start" class="btn btn-primary" onclick="startRecording(this);">Pradėti įrašymą</button>
+        <button id="stop" class="btn btn-warning" onclick="stopRecording(this);" style="display: none">Baigti įrašymą</button>
         <br>
     </div>
 </div>

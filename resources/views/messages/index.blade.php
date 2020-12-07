@@ -6,7 +6,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <title>Chat</title>
+    <title>Žinučių langas</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -224,7 +224,7 @@
                                         <form action="/messages/photo" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <input type="file" id="myFile" name="filename">
-                                            <input type="submit" value="Send">
+                                            <input type="submit" value="Įkelti">
                                         </form>
                                     </li>
                                     <li><a href="/messages/audio/create"><i class="fas fa-volume-up"></i>Įrašyti audio</a></li>
