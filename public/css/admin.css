@@ -3,15 +3,34 @@ html {
     -webkit-text-size-adjust: 100%
 }
 
+img {
+    height:50px;
+    width:50px;
+}
+
 .tdl{
+    position:relative;
+    color:#5ec741;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.tdlblocked{
     position:relative;
     color:#FF0000;
     text-align: center;
     white-space: nowrap;
 }
-.tdr{
+
+.tdrblocked{
     position:relative;
     color:#FF0000;
+    left:6px;
+    white-space: nowrap;
+}
+.tdr{
+    position:relative;
+    color:#5ec741;
     left:6px;
     white-space: nowrap;
 }
@@ -43,8 +62,11 @@ tr{
 .il:hover{
     color:white;
 }
-
 .tdx{
+    color:#5ec741;
+    width:50%;
+}
+.tdxblocked{
     color:#FF0000;
     width:50%;
 }

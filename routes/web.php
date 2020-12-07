@@ -21,8 +21,9 @@ use App\Http\Controllers\PagesController;
 Route::get('/', function () {return view('welcome');});
 // admin
 Route::prefix('admin')->group(function () {
-    Route::get('/block/{id}', function ($id) {return view('admin_block');})->name('admin_block')->middleware('is_admin');
-    Route::get('/unblock/{id}', function ($id) {return view('admin_unblock');})->name('admin_unblock')->middleware('is_admin');
+    Route::get('block/{id}', 'App\Http\Controllers\AdminController@block')->name('admin_block')->middleware('is_admin');
+    Route::get('unblock/{id}', 'App\Http\Controllers\AdminController@unblock')->name('admin_unblock')->middleware('is_admin');
+    
     Route::get('/statistics/{id}', function ($id) {return view('admin_statistics');})->name('admin_statistics')->middleware('is_admin');
     Route::get('/logincnt/{id}', function ($id) {return view('admin_logincnt');})->name('admin_logincnt')->middleware('is_admin');
     Route::get('/sentmesg/{id}', function ($id) {return view('admin_sentmesg');})->name('admin_sentmesg')->middleware('is_admin');

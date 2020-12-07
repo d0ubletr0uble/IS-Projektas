@@ -1,34 +1,16 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo asset('css/admin.css')?>" type="text/css">
-</head>
-
+@extends('layouts.app_admin')
+@section('content')
 @if(auth()->user()->is_admin == 1)
 
 <body class="antialiased">
-    <div class="ml-4 text-lg leading-7 font-semibold">Admin page</div>
-    <div class="ml-4 text-lg leading-7 font-semibold"><a href="/"
-            class="underline text-gray-900 dark:text-black">Home</a></div>
-
     <div
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                 <div class="grid grid-cols-2 md:grid-cols-1">
-
                     <div class="p-6">
                         <div class="flex items-center">
-                            <div class="ml-4 text-lgg h-5 text-gray-200 leading-7 font-semibold">
+                            <div class="ml-4">
                                 Administratoriaus vartotojų parinkimo langas
                             </div>
                         </div>
@@ -49,133 +31,92 @@
                                 <tbody>
                                     @foreach($users as $row)
                                     <tr>
-                                        <td class="tdl">{{$row->id}}</td>
-                                        <td class="tdl">{{$row->first_name}}</td>
-                                        <td class="tdl">{{$row->last_name}}</td>
-                                        <td class="tdl">{{$row->birthday}}</td>
-                                        <td class="tdl">{{$row->username}}</td>
-                                        <td class="tdl">{{$row->email}}</td>
+                                        @if($row->is_blocked == 0)
+                                        <td class="notblocked">{{$row->id}}</td>
+                                        <td class="notblocked">{{$row->first_name}}</td>
+                                        <td class="notblocked">{{$row->last_name}}</td>
+                                        <td class="notblocked">{{$row->birthday}}</td>
+                                        <td class="notblocked">{{$row->username}}</td>
+                                        <td class="notblocked">{{$row->email}}</td>
+                                        @if($row->is_blocked == 0)
+                                        <td class="notblocked">
+                                            <a href="{{route('admin_block', $row->id)}}" class="btn btn-primary"
+                                                onclick="return confirm('Are you sure?')"> <i
+                                                    class="fas fa-user-slash if"></i>
+                                            </a>
+                                        </td>
 
-                                        @if($row->is_blocked ==0)
-                                        <td class="tdr">
+                                        @else
+                                        <td class="notblocked">
+                                            <a href="{{route('admin_unblock', $row->id)}}" class="btn btn-primary">
+                                                <i class="fas fa-user if"></i></a>
+                                        </td>
+
+                                        @endif
+                                        <td class="notblocked">
+                                            <a href="{{route('admin_statistics', $row->id)}}" class="btn btn-primary"><i
+                                                    class="fas fa-info-circle ic"></i></a>
+                                        </td>
+
+                                        <td class="notblocked">
+                                            <a href="{{route('admin_logincnt', $row->id)}}" class="btn btn-primary">
+                                                <i class="far fa-address-book ic"></i>
+                                            </a>
+                                        </td>
+
+                                        <td class="notblocked">
+                                            <a href="{{route('admin_sentmesg', $row->id)}}" class="btn btn-primary"><i
+                                                    class="far fa-comment-dots il"></i></a>
+                                        </td>
+
+                                        @else
+                                        <td class="blocked">{{$row->id}}</td>
+                                        <td class="blocked">{{$row->first_name}}</td>
+                                        <td class="blocked">{{$row->last_name}}</td>
+                                        <td class="blocked">{{$row->birthday}}</td>
+                                        <td class="blocked">{{$row->username}}</td>
+                                        <td class="blocked">{{$row->email}}</td>
+                                        @if($row->is_blocked == 0)
+                                        <td class="blocked">
                                             <a href="{{route('admin_block', $row->id)}}" class="btn btn-primary"> <i
                                                     class="fas fa-user-slash if"></i>
                                             </a>
                                         </td>
 
                                         @else
-                                        <td class="tdr">
-                                            <a href="{{route('admin_unblock', $row->id)}}" class="btn btn-primary"> <i
-                                                    class="fas fa-user if"></i></a>
+                                        <td class="blocked">
+                                            <a href="{{route('admin_unblock', $row->id)}}" class="btn btn-primary">
+                                                <i class="fas fa-user if"></i></a>
                                         </td>
 
                                         @endif
-                                        <td class="tdr">
+                                        <td class="blocked">
                                             <a href="{{route('admin_statistics', $row->id)}}" class="btn btn-primary"><i
                                                     class="fas fa-info-circle ic"></i></a>
                                         </td>
 
-                                        <td class="tdx">
-                                            <a href="{{route('admin_logincnt', $row->id)}}" class="btn btn-primary"> <i
-                                                    class="far fa-address-book ic"></i>
+                                        <td class="blocked">
+                                            <a href="{{route('admin_logincnt', $row->id)}}" class="btn btn-primary">
+                                                <i class="far fa-address-book ic"></i>
                                             </a>
-                                        </td>
+                                        </td class="blocked">
 
-                                        <td class="tdx">
+                                        <td class="blocked">
                                             <a href="{{route('admin_sentmesg', $row->id)}}" class="btn btn-primary"><i
                                                     class="far fa-comment-dots il"></i></a>
                                         </td>
+                                        @endif
                                     </tr>
                                     @endforeach
                                 </tbody>
                         </div>
                         </table>
-
-                        {{-- <div class="ml-12">
-                            <div class="mt-2 text-red text-lg">
-                                • Vartotojas1
-                                <i class="fas fa-user"></i>
-                                <a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Unblock</a>
-                                <i class="fas fa-info-circle"></i>
-                                <a href="/admin/statistics"
-                                    class="underline text-gray-900 dark:text-white">Statistics</a>
-                                <i class="far fa-address-book"></i>
-                                <a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Login
-                                    count</a>
-                                <i class="far fa-comment-dots"></i>
-                                <a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Messages</a>
-                            </div>
-                        </div>
-                        <div class="ml-12">
-                            <div class="mt-2 dark:text-gray-400 text-lg">
-                                • Vartotojas2
-                                <i class="fas fa-user-slash"></i>
-                                <a href="/admin/block" class="underline text-gray-900 dark:text-white">Block</a>
-                                <i class="fas fa-user"></i>
-                                <a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Unblock</a>
-                                <i class="fas fa-info-circle"></i>
-                                <a href="/admin/statistics"
-                                    class="underline text-gray-900 dark:text-white">Statistics</a>
-                                <i class="far fa-address-book"></i>
-                                <a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Login
-                                    count</a>
-                                <i class="far fa-comment-dots"></i>
-                                <a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Messages</a>
-                            </div>
-                        </div>
-                        <div class="ml-12">
-                            <div class="mt-2 text-red text-lg">
-                                • Vartotojas3
-                                <i class="fas fa-user"></i>
-                                <a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Unblock</a>
-                                <i class="fas fa-info-circle"></i>
-                                <a href="/admin/statistics"
-                                    class="underline text-gray-900 dark:text-white">Statistics</a>
-                                <i class="far fa-address-book"></i>
-                                <a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Login
-                                    count</a>
-                                <i class="far fa-comment-dots"></i>
-                                <a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Messages</a>
-                            </div>
-                        </div>
-                        <div class="ml-12">
-                            <div class="mt-2 dark:text-gray-400 text-lg">
-                                • Vartotojas4
-                                <i class="fas fa-user-slash"></i>
-                                <a href="/admin/block" class="underline text-gray-900 dark:text-white">Block</a>
-                                <i class="fas fa-user"></i>
-                                <a href="/admin/unblock" class="underline text-gray-900 dark:text-white">Unblock</a>
-                                <i class="fas fa-info-circle"></i>
-                                <a href="/admin/statistics"
-                                    class="underline text-gray-900 dark:text-white">Statistics</a>
-                                <i class="far fa-address-book"></i>
-                                <a href="/admin/logincnt" class="underline text-gray-900 dark:text-white">Login
-                                    count</a>
-                                <i class="far fa-comment-dots"></i>
-                                <a href="/admin/sentmesg" class="underline text-gray-900 dark:text-white">Messages</a>
-                            </div>
-                        </div> --}}
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center">
-                            <div class="ml-4 text-lgg h-5 text-gray-200 leading-7 font-semibold">
-                                Admin forumas
-                            </div>
-
-                        </div>
-                        <div class="ml-12">
-                            <div class="mt-2 dark:text-gray-400  text-lg">
-                                <i class="fas fa-align-center"></i>
-                                <a href="/admin/admin_forum" class="underline text-gray-900 dark:text-white">Forumas</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 @endif
 
-</html>
+@endsection

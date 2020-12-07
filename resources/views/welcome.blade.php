@@ -390,6 +390,13 @@
             }
         }
 
+        .imgg {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            margin-left: 20px;
+        }
+
     </style>
 
     <style>
@@ -401,7 +408,7 @@
 </head>
 
 <body class="antialiased">
-    <h1>HOME</h1>
+    <h1><img src="https://media.giphy.com/media/iJgyjInSJyTxNYlEfx/giphy.gif" alt="test" class="imgg"></h1>
     <div
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
         @if (Route::has('login'))
@@ -447,9 +454,6 @@
                             class="underline text-gray-900 dark:text-white">Profilis</a></div>
                 </div>
             </div>
-            <img width="600px" class="mx-auto"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Orange-Whole-%26-Split.jpg/1280px-Orange-Whole-%26-Split.jpg"
-                alt="">
         </div>
     </div>
 </body>
