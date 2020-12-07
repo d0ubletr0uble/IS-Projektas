@@ -17,12 +17,12 @@ class MessageController extends Controller
     public function index()
     {
         $emojis = Emoji::where('user_id', Auth::id())->get();
-        return view('messages', compact('emojis'));
+        return view('messages.index', compact('emojis'));
     }
 
-    public function audioMessage()
+    public function audio()
     {
-        return view('audio');
+        return view('messages.audio.create');
     }
 
     public function storePhoto(Request $request)
@@ -31,11 +31,25 @@ class MessageController extends Controller
             'filename' => 'required|mimes:jpeg,bmp,png|max:2048'
         ]);
 
-        $fileName = time().'_'.$request->file('filename')->getClientOriginalName();
+        $fileName = time() . '_' . $request->file('filename')->getClientOriginalName();
         $request->file('filename')->storeAs('photos/', $fileName, 'public');
 
         //todo record into database
 
         return back();
     }
+
+    public function storeAudio(Request $request)
+    {
+//        $request->validate([
+//            'audio' => 'required'
+//        ]);
+
+        $request->file('audio')->storeAs('audio/', time() . '.wav', 'public');
+
+        //todo record into database
+
+        return back();
+    }
+
 }

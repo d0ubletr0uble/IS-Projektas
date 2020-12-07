@@ -227,7 +227,7 @@
                                             <input type="submit" value="Send">
                                         </form>
                                     </li>
-                                    <li><a href="/audio"><i class="fas fa-volume-up"></i>Įrašyti audio</a></li>
+                                    <li><a href="/messages/audio/create"><i class="fas fa-volume-up"></i>Įrašyti audio</a></li>
                                 </ul>
                             </div>
                         </div>
