@@ -16,7 +16,7 @@ class EmojiController extends Controller
 
     public function create()
     {
-        return view('emoji.create');
+        return view('messages.emoji.create');
     }
 
     public function store(Request $request)
