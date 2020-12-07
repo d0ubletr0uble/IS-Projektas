@@ -23,7 +23,7 @@ Route::get('/', function () {return view('welcome');});
 Route::prefix('admin')->group(function () {
     Route::get('block/{id}', 'App\Http\Controllers\AdminController@block')->name('admin_block')->middleware('is_admin');
     Route::get('unblock/{id}', 'App\Http\Controllers\AdminController@unblock')->name('admin_unblock')->middleware('is_admin');
-    
+
     Route::get('/statistics/{id}', function ($id) {return view('admin_statistics');})->name('admin_statistics')->middleware('is_admin');
     Route::get('/logincnt/{id}', function ($id) {return view('admin_logincnt');})->name('admin_logincnt')->middleware('is_admin');
     Route::get('/sentmesg/{id}', function ($id) {return view('admin_sentmesg');})->name('admin_sentmesg')->middleware('is_admin');
@@ -73,7 +73,7 @@ Route::prefix('forum')->name('Forumas')->group(function(){
     Route::get('/post/show/{id}', 'App\Http\Controllers\PostController@show')->name('.postshow');
     Route::post('/comment/store', 'App\Http\Controllers\CommentController@store')->name('.commentadd');
     Route::get('/post/edit/{id}', 'App\Http\Controllers\PostController@edit')->name('.postedit');
-    Route::match(['put','patch'],'/{id}', 'App\Http\Controllers\PostController@update')->name('.postupdate');
+    Route::match(['put','patch'],'edit/{id}', 'App\Http\Controllers\PostController@update')->name('.postupdate');
     Route::get('/comment/edit/{id}', 'App\Http\Controllers\CommentController@edit')->name('.commentedit');
     Route::match(['put','patch'],'/{id}', 'App\Http\Controllers\CommentController@update')->name('.commentupdate');
     Route::delete('/post/delete/{id}', 'App\Http\Controllers\PostController@destroy')->name('.postdestroy');
