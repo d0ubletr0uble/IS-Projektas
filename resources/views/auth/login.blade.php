@@ -5,14 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
+                    <div class="card-header">{{ __('Prisijungimo langas') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
                             <div class="form-group row">
-                                <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
+                                <label for="username" class="col-md-4 col-form-label text-md-right">Slapyvardis</label>
 
                                 <div class="col-md-6">
                                     <input id="username" type="username"
@@ -29,7 +29,7 @@
 
                             <div class="form-group row">
                                 <label for="password"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Slaptažodis') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -51,7 +51,7 @@
                                                id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                         <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
+                                            {{ __('Įsiminti mane') }}
                                         </label>
                                     </div>
                                 </div>
@@ -60,12 +60,12 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
+                                        {{ __('Prisijungti') }}
                                     </button>
 
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
+                                            {{ __('Pamrišau slaptažodį') }}
                                         </a>
                                     @endif
                                 </div>
