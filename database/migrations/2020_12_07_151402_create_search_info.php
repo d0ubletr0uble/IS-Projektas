@@ -15,7 +15,6 @@ class CreateSearchInfo extends Migration
     {
         Schema::create('search_info', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('search_info');
             $table->date('date');
         });
