@@ -49,8 +49,8 @@
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                             • Įveskite grupės pavadinimą:
                             <ul>
-                                @foreach($group as $group)
-                                    <li>{{$group->id}} - {{$group->name}}</li>
+                                @foreach($groups as $groups)
+                                    <li>{{$groups->id}} - {{$groups->name}}</li>
                                 @endforeach
                             </ul>
                             <form action = "/create" method="post">
