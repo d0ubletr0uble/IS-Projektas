@@ -14,14 +14,14 @@ class CreateLoginInfo extends Migration
     public function up()
     {
         Schema::create('login_info', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
             $table->text('country');
             $table->text('device');
             $table->text('browser');
             $table->datetime('date');
             $table->text('ip');
             $table->text('os');
-            $table->text('provider');
         });
     }
 
