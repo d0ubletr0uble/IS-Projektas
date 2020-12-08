@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGroupMembersTable extends Migration
+class CreateGroupTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateGroupMembersTable extends Migration
      */
     public function up()
     {
-        Schema::create('group_members', function (Blueprint $table) {
+        Schema::create('group', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('group_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->timestamps();
+            $table->string('name');
+            $table->foreignId('users_id')->constrained();
         });
     }
 
@@ -28,6 +27,6 @@ class CreateGroupMembersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_members');
+        Schema::dropIfExists('group');
     }
 }

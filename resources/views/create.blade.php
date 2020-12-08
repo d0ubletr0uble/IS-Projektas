@@ -48,8 +48,17 @@
                     <div class="ml-12">
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                             • Įveskite grupės pavadinimą:
-                            <textarea rows="1" cols="30" placeholder="Įveskite pavadinimą"></textarea><br><br>
-                            <input type="submit" class="button2" value="Sukurti">
+                            <ul>
+                                @foreach($group as $group)
+                                    <li>{{$group->id}} - {{$group->name}}</li>
+                                @endforeach
+                            </ul>
+                            <form action = "/create" method="post">
+                                <input rows="2" cols="30" type="text" name="name1" placeholder="Įveskite pavadinimą">
+                                <br>
+                                {{csrf_field() }}
+                                <button type="submit" class="button2">Sukurti</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -57,4 +66,6 @@
         </div>
     </div>
 </body>
+
+
 </html>

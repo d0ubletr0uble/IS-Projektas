@@ -46,12 +46,14 @@ Route::post('/messages/photo', [MessageController::class, 'storePhoto']);
 Route::get('/messages/audio/create', [MessageController::class, 'audio']);
 Route::post('/messages/audio', [MessageController::class, 'storeAudio']);
 
+// Grupės sukūrimas
+Route::get('/messages/create', 'App\Http\Controllers\CreateController@index');
+Route::post('/create', 'App\Http\Controllers\CreateController@create');
+
+
 
 Route::get('/messages/edit', function () {
     return view('edit');
-});
-Route::get('/messages/create', function () {
-    return view('create');
 });
 Route::get('/messages/edit/adduser', function () {
     return view('edit_adduser');
