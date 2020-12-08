@@ -18,6 +18,7 @@ class Info extends Model
      */
      protected $fillable = [
         'id',
+        'user_id',
         'country',
         'device',
         'browser',
