@@ -8,7 +8,6 @@ use App\Models\GroupMember;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class MessageController extends Controller
 {
@@ -59,9 +58,29 @@ class MessageController extends Controller
         return back();
     }
 
-    public function storeMessage(Request $request)
+    public function storeMessage(Group $group, Request $request)
     {
+        if (!$group->hasUser(Auth::id()))
+            return response('Unauthorized.', 401);
+        else {
+            Message::create([
+                'content' => $request->input('text'),
+                'type' => 'text',
+                'status' => 'sent',
+                'group_id' => $group->id,
+                'group_member_id' => GroupMember::getMemberId($group->id, Auth::id())
+            ]);
+        }
+    }
 
+    public function getGroupMessages(Group $group)
+    {
+        if (!$group->hasUser(Auth::id()))
+            return response('Unauthorized.', 401);
+        else {
+            //user belongs to group
+            return $group->getMessages()->toJson();
+        }
     }
 
 }

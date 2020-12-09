@@ -1,3 +1,11 @@
+.selected {
+    background-color: sandybrown;
+}
+
+.group_id {
+    cursor:pointer;
+}
+
 .group {
     transition: .7s;
 }
@@ -173,6 +181,7 @@ a:hover {
     color: rgba(255,255,255,0.6);
 }
 .msg_cotainer{
+    min-width: 70px;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 10px;

@@ -15,4 +15,9 @@ class GroupMember extends Model
 
     protected $fillable = ['group_id', 'user_id'];
 
+    public static function getMemberId($groupId, $userId)
+    {
+        return GroupMember::where('group_id', $groupId)->where('user_id', $userId)->select('id')->first()->id;
+    }
+
 }

@@ -22,4 +22,14 @@ class Group extends Model
         return Group::join('group_members', 'group_members.group_id', 'groups.id')->where('user_id', $userId)->get('groups.*');
     }
 
+    public function getMessages()
+    {
+        return Message::where('group_id', $this->id)->get();
+    }
+
+    public function hasUser($userId)
+    {
+        return GroupMember::where('group_id', $this->id)->where('user_id', $userId)->exists();
+    }
+
 }

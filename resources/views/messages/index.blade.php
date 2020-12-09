@@ -59,8 +59,7 @@
                 <div class="card-body contacts_body">
                     <ui class="contacts">
                         @foreach($groups as $group)
-                            <li>
-                                <a href="#">
+                            <li id="{{$group->id}}" class="group_id">
                                     <div class="d-flex bd-highlight group">
                                         <div class="img_cont">
                                             <img
@@ -77,8 +76,6 @@
                                             @endif
                                         </div>
                                     </div>
-                                </a>
-
                             </li>
                         @endforeach
                     </ui>
@@ -96,13 +93,13 @@
                             <span class="online_icon"></span>
                         </div>
                         <div class="user_info">
-                            <span>Susirašinėjimas su vartotoju: Jonas</span>
-                            <p>1767 Messages</p>
+                            <span id="group_name">Jonas</span>
+                            <p>Žinučių istorija</p>
                             <span><a class="test" href="{{ url('/messages/edit') }}">Grupes nustatymai</a></span>
                         </div>
                     </div>
                 </div>
-                <div class="card-body msg_card_body">
+                <div id="messages" class="card-body msg_card_body">
                     <div class="d-flex justify-content-start mb-4">
                         <div class="img_cont_msg">
                             <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
@@ -220,7 +217,7 @@
 
                             </div>
                         </div>
-                        <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+                        <span class="input-group-text send_btn"><i id="send" class="fas fa-location-arrow"></i></span>
                     </div>
                 </div>
             </div>
