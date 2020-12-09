@@ -23,10 +23,14 @@ Route::get('/', function () {return view('welcome');});
 Route::prefix('admin')->group(function () {
     Route::get('block/{id}', 'App\Http\Controllers\AdminController@block')->name('admin_block')->middleware('is_admin');
     Route::get('unblock/{id}', 'App\Http\Controllers\AdminController@unblock')->name('admin_unblock')->middleware('is_admin');
+    Route::get('/logincnt/{id}', 'App\Http\Controllers\AdminController@login_count')->name('admin_logincnt')->middleware('is_admin');
+    Route::get('/sentmesg/{id}', 'App\Http\Controllers\AdminController@sent_messages')->name('sent_mesg')->middleware('is_admin');
+    // Route::get('/sentmesg/{id}', function ($id) {return view('admin_sentmesg');})->name('admin_sentmesg')->middleware('is_admin');
 
     Route::get('/statistics/{id}', function ($id) {return view('admin_statistics');})->name('admin_statistics')->middleware('is_admin');
-    Route::get('/logincnt/{id}', function ($id) {return view('admin_logincnt');})->name('admin_logincnt')->middleware('is_admin');
-    Route::get('/sentmesg/{id}', function ($id) {return view('admin_sentmesg');})->name('admin_sentmesg')->middleware('is_admin');
+
+
+
 
     Route::get('/admin_forum', function () {return view('admin_forum');})->name('admin_forum')->middleware('is_admin');
     Route::get('/admin_remove', function () {return view('admin_remove');})->name('admin_remove')->middleware('is_admin');

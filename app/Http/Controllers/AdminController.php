@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
+use App\Models\Info;
+use App\Models\Message;
 
 class AdminController extends Controller
 {
@@ -45,4 +47,14 @@ class AdminController extends Controller
         return redirect()->route('admin');
     }
 
+    public function login_count($id)
+    {
+        $info = Info::where('user_id',$id)->get();
+        return view('admin_logincnt')->with('info', $info); 
+    }
+    public function sent_messages($id)
+    {
+        $messages = Message::where('id',$id)->get();//userid or id
+        return view('admin_sentmesg')->with('messages', $messages); 
+    }
 }
