@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Emoji;
+use App\Models\Group;
+use App\Models\GroupMember;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,8 +19,9 @@ class MessageController extends Controller
 
     public function index()
     {
-        $emojis = Emoji::where('user_id', Auth::id())->get();
-        return view('messages.index', compact('emojis'));
+        $emojis = Emoji::getUserEmojis(Auth::id());
+        $groups = Group::getUserGroups(Auth::id());
+        return view('messages.index', compact('emojis', 'groups'));
     }
 
     public function audio()

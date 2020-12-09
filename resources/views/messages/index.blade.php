@@ -43,7 +43,7 @@
                     <div class="ml-12">
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                             <p style="color:whitesmoke">
-                                <a class="test2" href="/messages/create"
+                                <a class="test2" href="/messages/groups/create"
                                    class="underline text-gray-900 dark:text-white">Naujos grupės sukūrimas</a>
                             </p>
                         </div>
@@ -58,62 +58,29 @@
                 </div>
                 <div class="card-body contacts_body">
                     <ui class="contacts">
-                        <li class="active">
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-                                         class="rounded-circle user_img">
-                                    <span class="online_icon"></span>
-                                </div>
-                                <div class="user_info">
-                                    <span>Jonas</span>
-                                    <p>Online</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img
-                                        src="https://2.bp.blogspot.com/-8ytYF7cfPkQ/WkPe1-rtrcI/AAAAAAAAGqU/FGfTDVgkcIwmOTtjLka51vineFBExJuSACLcBGAs/s320/31.jpg"
-                                        class="rounded-circle user_img">
-                                    <span class="online_icon offline"></span>
-                                </div>
-                                <div class="user_info">
-                                    <span>Sandra</span>
-                                    <p>Offline 7min</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img
-                                        src="https://i.pinimg.com/originals/ac/b9/90/acb990190ca1ddbb9b20db303375bb58.jpg"
-                                        class="rounded-circle user_img">
-                                    <span class="online_icon"></span>
-                                </div>
-                                <div class="user_info">
-                                    <span>Grupe: IS projektas</span>
-                                    <p>Online</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex bd-highlight">
-                                <div class="img_cont">
-                                    <img
-                                        src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
-                                        class="rounded-circle user_img">
-                                    <span class="online_icon offline"></span>
-                                </div>
-                                <div class="user_info">
-                                    <span>Petras</span>
-                                    <p>Offline 50min</p>
-                                </div>
+                        @foreach($groups as $group)
+                            <li>
+                                <a href="#">
+                                    <div class="d-flex bd-highlight group">
+                                        <div class="img_cont">
+                                            <img
+                                                src="https://2.bp.blogspot.com/-8ytYF7cfPkQ/WkPe1-rtrcI/AAAAAAAAGqU/FGfTDVgkcIwmOTtjLka51vineFBExJuSACLcBGAs/s320/31.jpg"
+                                                class="rounded-circle user_img">
+                                            <span class="online_icon offline"></span>
+                                        </div>
+                                        <div class="user_info">
+                                            <span>{{$group->name}}</span>
+                                            <br>
+                                            @if($group->users_id == Auth::id())
+                                                <a class="text-warning"
+                                                   href="/messages/groups/{{$group->id}}">Redaguoti</a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </a>
 
-                            </div>
-                        </li>
+                            </li>
+                        @endforeach
                     </ui>
                 </div>
                 <div class="card-footer"></div>
@@ -227,7 +194,8 @@
                                             <input type="submit" value="Įkelti">
                                         </form>
                                     </li>
-                                    <li><a href="/messages/audio/create"><i class="fas fa-volume-up"></i>Įrašyti audio</a></li>
+                                    <li><a href="/messages/audio/create"><i class="fas fa-volume-up"></i>Įrašyti
+                                            audio</a></li>
                                 </ul>
                             </div>
                         </div>

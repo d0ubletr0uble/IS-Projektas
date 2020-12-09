@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GroupsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageController;
@@ -52,8 +53,9 @@ Route::get('/messages/audio/create', [MessageController::class, 'audio'])->middl
 Route::post('/messages/audio', [MessageController::class, 'storeAudio']);
 
 // Grupės sukūrimas
-Route::get('/messages/create', 'App\Http\Controllers\CreateController@index');
-Route::post('/create', 'App\Http\Controllers\CreateController@create');
+Route::get('/messages/groups/create', [GroupsController::class, 'create']);
+Route::get('messages/groups/{group}', [GroupsController::class, 'edit']);
+Route::post('/messages/groups', [GroupsController::class, 'store']);
 
 
 
