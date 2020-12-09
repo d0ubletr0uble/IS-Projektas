@@ -23,7 +23,7 @@
                             <a href="{{ route('Forumas.postshow', $post->id) }}" class="btn btn-primary">Rodyti temą</a>
                         </td>
                         <td>
-                            @if(Auth::user()->username == $post->username)
+                            @if(Auth::user()->username == $post->username || auth()->user()->is_admin == 1)
                             <a> {!! Form::open(['action' => ['App\Http\Controllers\PostController@destroy',$post->id],
                                 'method'=>'POST']) !!}
                                 @csrf

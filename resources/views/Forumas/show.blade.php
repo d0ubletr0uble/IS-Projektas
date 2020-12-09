@@ -21,7 +21,7 @@
                         <p>Komentaras: <br>{{ $comment->body }}</p>
                     </div>
                     <td>
-                        @if(Auth::user()->id == $comment->user_id)
+                        @if(Auth::user()->id == $comment->user_id || auth()->user()->is_admin == 1)
                         <a> {!! Form::open(['action' => ['App\Http\Controllers\CommentController@destroy',$comment->id],
                             'method'=>'POST']) !!}
                             @csrf

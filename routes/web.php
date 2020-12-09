@@ -24,13 +24,13 @@ Route::prefix('admin')->group(function () {
     Route::get('block/{id}', 'App\Http\Controllers\AdminController@block')->name('admin_block')->middleware('is_admin');
     Route::get('unblock/{id}', 'App\Http\Controllers\AdminController@unblock')->name('admin_unblock')->middleware('is_admin');
     Route::get('/logincnt/{id}', 'App\Http\Controllers\AdminController@login_count')->name('admin_logincnt')->middleware('is_admin');
-    Route::get('/sentmesg/{id}', 'App\Http\Controllers\AdminController@sent_messages')->name('sent_mesg')->middleware('is_admin');
-    // Route::get('/sentmesg/{id}', function ($id) {return view('admin_sentmesg');})->name('admin_sentmesg')->middleware('is_admin');
+    Route::get('/sentmesg/{id}', 'App\Http\Controllers\AdminController@sent_messages')->name('admin_sentmesg')->middleware('is_admin');
 
+
+
+
+    
     Route::get('/statistics/{id}', function ($id) {return view('admin_statistics');})->name('admin_statistics')->middleware('is_admin');
-
-
-
 
     Route::get('/admin_forum', function () {return view('admin_forum');})->name('admin_forum')->middleware('is_admin');
     Route::get('/admin_remove', function () {return view('admin_remove');})->name('admin_remove')->middleware('is_admin');
@@ -42,12 +42,12 @@ Route::prefix('admin')->group(function () {
 // admin
 
 // message subsystem
-Route::get('/messages', [MessageController::class, 'index']);
-Route::get('/messages/emoji/create', [EmojiController::class, 'create']);
-Route::post('/messages/emoji', [EmojiController::class, 'store']);
+Route::get('/messages', [MessageController::class, 'index'])->middleware('is_blocked');
+Route::get('/messages/emoji/create', [EmojiController::class, 'create'])->middleware('is_blocked');
+Route::post('/messages/emoji', [EmojiController::class, 'store'])->middleware('is_blocked');
 Route::delete('messages/emoji/{emoji}', [EmojiController::class, 'destroy']);
 Route::post('/messages/photo', [MessageController::class, 'storePhoto']);
-Route::get('/messages/audio/create', [MessageController::class, 'audio']);
+Route::get('/messages/audio/create', [MessageController::class, 'audio'])->middleware('is_blocked');
 Route::post('/messages/audio', [MessageController::class, 'storeAudio']);
 
 // Grupės sukūrimas
@@ -58,30 +58,32 @@ Route::post('/create', 'App\Http\Controllers\CreateController@create');
 
 Route::get('/messages/edit', function () {
     return view('edit');
-});
+})->middleware('is_blocked');
 Route::get('/messages/edit/adduser', function () {
     return view('edit_adduser');
-});
+})->middleware('is_blocked');
 Route::get('/messages/edit/removeuser', function () {
     return view('edit_removeuser');
-});
+})->middleware('is_blocked');
 Route::get('/messages/edit/changename', function () {
     return view('edit_changename');
-});
+})->middleware('is_blocked');
 
 
 
 Route::prefix('forum')->name('Forumas')->group(function(){
 
 
-    Route::get('/posts', 'App\Http\Controllers\PostController@index')->name('.posts');
-    Route::get('/post/create', 'App\Http\Controllers\PostController@create')->name('.postcreate');
+    Route::get('/posts', 'App\Http\Controllers\PostController@index')->name('.posts')->middleware('is_blocked');
+
+    Route::get('/post/create', 'App\Http\Controllers\PostController@create')->name('.postcreate')->middleware('is_blocked');
     Route::post('/post/store', 'App\Http\Controllers\PostController@store')->name('.poststore');
-    Route::get('/post/show/{id}', 'App\Http\Controllers\PostController@show')->name('.postshow');
+    Route::get('/post/show/{id}', 'App\Http\Controllers\PostController@show')->name('.postshow')->middleware('is_blocked');
     Route::post('/comment/store', 'App\Http\Controllers\CommentController@store')->name('.commentadd');
+
     Route::get('/post/edit/{id}', 'App\Http\Controllers\PostController@edit')->name('.postedit');
     Route::match(['put','patch'],'edit/{id}', 'App\Http\Controllers\PostController@update')->name('.postupdate');
-    Route::get('/comment/edit/{id}', 'App\Http\Controllers\CommentController@edit')->name('.commentedit');
+    Route::get('/comment/edit/{id}', 'App\Http\Controllers\CommentController@edit')->name('.commentedit')->middleware('is_blocked');
     Route::match(['put','patch'],'/{id}', 'App\Http\Controllers\CommentController@update')->name('.commentupdate');
     Route::delete('/post/delete/{id}', 'App\Http\Controllers\PostController@destroy')->name('.postdestroy');
     Route::delete('/comment/delete/{id}', 'App\Http\Controllers\CommentController@destroy')->name('.commentdestroy');
