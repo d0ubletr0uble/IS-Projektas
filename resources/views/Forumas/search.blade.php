@@ -17,7 +17,7 @@
     <div class="container">
         @if(isset($details))
             <p> Paieškos <b> {{ $query }} </b> rezultatai yra :</p>
-            <h2>Vartotojo informacija</h2>
+          
             <table class="table table-striped">
                 <thead>
                 <tr>
