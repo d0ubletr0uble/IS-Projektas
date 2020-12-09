@@ -53,7 +53,7 @@
                                     <li>{{$groups->id}} - {{$groups->name}}</li>
                                 @endforeach
                             </ul>
-                            <form action = "/create" method="post">
+                            <form action = "/messages/groups" method="post">
                                 <input rows="2" cols="30" type="text" name="name1" placeholder="Įveskite pavadinimą">
                                 <br>
                                 {{csrf_field() }}
