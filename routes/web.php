@@ -6,6 +6,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\EmojiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ Route::prefix('admin')->group(function () {
 
 
 
-    
+
     Route::get('/statistics/{id}', function ($id) {return view('admin_statistics');})->name('admin_statistics')->middleware('is_admin');
 
     Route::get('/admin_forum', function () {return view('admin_forum');})->name('admin_forum')->middleware('is_admin');
@@ -88,6 +89,14 @@ Route::prefix('forum')->name('Forumas')->group(function(){
     Route::delete('/post/delete/{id}', 'App\Http\Controllers\PostController@destroy')->name('.postdestroy');
     Route::delete('/comment/delete/{id}', 'App\Http\Controllers\CommentController@destroy')->name('.commentdestroy');
 
+    Route::any ( '/search', function () {
+        $q = Request::input ( 'q' );
+        $message = Post::where ( 'title', 'LIKE', '%' . $q . '%' )->orWhere ( 'username', 'LIKE', '%' . $q . '%' )->get ();
+        if (count ( $message ) > 0)
+            return view ( 'Forumas.search' )->withDetails ( $message )->withQuery ( $q );
+        else
+            return view ( 'Forumas.search' )->withMessage ( 'Temų su tokiu pavadinimu nebuvo rasta' );
+    } ) ->name('.search');
 });
 
 

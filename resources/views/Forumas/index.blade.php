@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -45,6 +47,9 @@
             </table>
             <td>
                 <a href="{{ route('Forumas.postcreate') }}" class="btn btn-primary">Sukurti temą</a>
+            </td>
+            <td>
+                <a href="{{ route('Forumas.search') }}" class="btn btn-primary">Temos paieška</a>
             </td>
         </div>
     </div>
