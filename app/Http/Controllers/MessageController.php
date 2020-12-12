@@ -23,9 +23,9 @@ class MessageController extends Controller
         return view('messages.index', compact('emojis', 'groups'));
     }
 
-    public function audio()
+    public function audio(Group $group)
     {
-        return view('messages.audio.create');
+        return view('messages.audio.create', compact('group'));
     }
 
     public function storePhoto(Request $request)
@@ -34,28 +34,36 @@ class MessageController extends Controller
             'filename' => 'required|mimes:jpeg,bmp,png|max:2048'
         ]);
 
+        $id = $request->input('group_id');
         $fileName = time() . '_' . $request->file('filename')->getClientOriginalName();
         $request->file('filename')->storeAs('photos/', $fileName, 'public');
 
-        //todo record into database
+        Message::create([
+            'content' => '/storage/photos/' . $fileName,
+            'type' => 'photo',
+            'status' => 'sent',
+            'group_id' => $id,
+            'group_member_id' => GroupMember::getMemberId($id, Auth::id())
+        ]);
 
+//        return response(null);
         return back();
     }
 
     public function storeAudio(Request $request)
     {
+        $id = $request->input('group_id');
         $filename = time() . '.wav';
         $request->file('audio')->storeAs('audio/', $filename, 'public');
-
         Message::create([
             'content' => '/storage/audio/' . $filename,
             'type' => 'audio',
             'status' => 'sent',
-            'group_id' => 1,
-            'group_member_id' => Auth::id()
+            'group_id' => $id,
+            'group_member_id' => GroupMember::getMemberId($id, Auth::id())
         ]);
 
-        return back();
+        return response(null);
     }
 
     public function storeMessage(Group $group, Request $request)
@@ -70,17 +78,18 @@ class MessageController extends Controller
                 'group_id' => $group->id,
                 'group_member_id' => GroupMember::getMemberId($group->id, Auth::id())
             ]);
+            return response(null);
         }
     }
 
     public function getGroupMessages(Group $group)
     {
-        if (!$group->hasUser(Auth::id()))
-            return response('Unauthorized.', 401);
-        else {
-            //user belongs to group
-            return $group->getMessages()->toJson();
-        }
+        return $group->getMessages();
+    }
+
+    public function getLastMessageId(Group $group)
+    {
+        return $group->getLastMessageId();
     }
 
 }

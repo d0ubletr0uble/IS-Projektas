@@ -16,8 +16,8 @@ window.onload = function () {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'X-CSRF-TOKEN': document.getElementsByName('csrf-token')[0].content
             },
-            success: function() {
-              parent.remove();
+            success: function () {
+                parent.remove();
             }
         });
 
@@ -34,8 +34,9 @@ window.onload = function () {
 
     let activeGroup = $(".group_id").attr('id');
     let activeGroupElement = $(".group_id")[0];
+    let latestId = -1;
 
-    $(".group_id").click(function (e){
+    $(".group_id").click(function (e) {
         e.preventDefault();
         if ($(e.target).is('a'))
             location = e.target.href;
@@ -44,6 +45,10 @@ window.onload = function () {
         activeGroupElement.classList.remove('selected');
         activeGroupElement = e.target.parentElement;
         activeGroup = activeGroupElement.getAttribute("id");
+
+        $('input[name="group_id"]').val(activeGroup);
+        $('#audio').attr('href', `/messages/audio/create/${activeGroup}`);
+
         activeGroupElement.classList.add('selected');
         $('#group_name').text($(activeGroupElement).find('.user_info>span').text());
         loadMessages();
@@ -51,10 +56,7 @@ window.onload = function () {
 
     $(".group_id").children()[0].click(null);
 
-    function loadMessages()
-    {
-        $('#messages').empty();
-
+    function loadMessages() {
         $.ajax({
             url: `messages/${activeGroup}`,
             type: 'get',
@@ -66,18 +68,53 @@ window.onload = function () {
         });
     }
 
-    function showMessages(messages)
+    function checkForChanges()
     {
-        for(let message of JSON.parse(messages))
-        {
-            console.log(message);
-            html = $('<div class="d-flex justify-content-start mb-4">').
-            append('<div class="img_cont_msg"><img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg"></div>' +
-                `<div class="msg_cotainer">${message.content}`+
-                '<span class="msg_time">8:40 AM, Today</span></div>');
+        let id = $.ajax({
+            url: `messages/pulse/${activeGroup}`,
+            type: 'get',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRF-TOKEN': document.getElementsByName('csrf-token')[0].content
+            },
+            success: function (e) {
+                console.log('check');
+                if(e != latestId)
+                    console.log('load');
+                    loadMessages();
+            }
+        })
+    }
+
+
+    function showMessages(messages) {
+        $('#messages').empty();
+        messages = JSON.parse(messages);
+        for (let message of messages) {
+            html = messageHTML(message);
             $('#messages').append(html);
         }
+        latestId = messages.pop().id;
     }
+
+    function messageHTML(message) {
+        switch (message.type) {
+            case 'text':
+                html = message.content;
+                break;
+            case 'audio':
+                html = `<audio controls src="${message.content}">`
+                break;
+            case 'photo':
+                html = `<a href="${message.content}"><img src="${message.content}" width="300px"></a>`
+                break;
+
+        }
+        return $('<div class="d-flex justify-content-start mb-4">').append('<div class="img_cont_msg"><img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg"></div>' +
+            `<div class="msg_cotainer">${html}` +
+            '<span class="msg_time">8:40 AM, Today</span></div>');;
+    }
+
 
     $('#send').click(function (e) {
         let text = $('#input');
@@ -97,6 +134,5 @@ window.onload = function () {
         text.val(''); // clear text
     });
 
-    // loadMessages();
-    // setInterval(loadMessages, 3000);
+    setInterval(checkForChanges, 30000);
 }

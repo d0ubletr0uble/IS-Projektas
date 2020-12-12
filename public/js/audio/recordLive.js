@@ -54,11 +54,11 @@ function handleWAV(blob) {
         $('#recordingslist tr:nth-child(' + (currentEditedSoundIndex + 1) + ')').remove();
     }
 
-    let url = URL.createObjectURL(blob);
-
-
+    // let url = URL.createObjectURL(blob);
+    let group_id = $('#group_id').attr('content');
     let formData = new FormData();
     formData.append('audio', blob);
+    formData.append('group_id', group_id);
     fetch('/messages/audio',
         {
             method: 'POST',

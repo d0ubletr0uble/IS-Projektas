@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @property mixed id
@@ -24,12 +24,22 @@ class Group extends Model
 
     public function getMessages()
     {
-        return Message::where('group_id', $this->id)->get();
+        if (!$this->hasUser(Auth::id()))
+            return response(null, 403);
+        else
+            return Message::where('group_id', $this->id)->get()->toJson();
+    }
+
+    public function getLastMessageId()
+    {
+        if (!$this->hasUser(Auth::id()))
+            return response(null, 401);
+        else
+            return Message::where('group_id', $this->id)->latest()->first()->id;
     }
 
     public function hasUser($userId)
     {
         return GroupMember::where('group_id', $this->id)->where('user_id', $userId)->exists();
     }
-
 }

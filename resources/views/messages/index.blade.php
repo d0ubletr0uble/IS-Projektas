@@ -188,10 +188,11 @@
                                         <form action="/messages/photo" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <input type="file" id="myFile" name="filename">
+                                            <input type="hidden" name="group_id" value="">
                                             <input type="submit" value="Įkelti">
                                         </form>
                                     </li>
-                                    <li><a href="/messages/audio/create"><i class="fas fa-volume-up"></i>Įrašyti
+                                    <li><a id="audio" href="/messages/audio/create"><i class="fas fa-volume-up"></i>Įrašyti
                                             audio</a></li>
                                 </ul>
                             </div>

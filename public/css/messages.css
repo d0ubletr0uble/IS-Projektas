@@ -1,3 +1,8 @@
+.loading {
+    width: 75%;
+    margin: auto;
+}
+
 .selected {
     background-color: sandybrown;
 }
