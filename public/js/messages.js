@@ -1,5 +1,13 @@
 window.onload = function () {
 
+    fetch('/messages/emoji/list').then(r => r.json()).then(s => {
+            dict = {};
+            s.forEach(e => dict[e.name] = `/storage/emoji/${e.link}`);
+            window.emojis = dict;
+            window.emoji_re = new RegExp( Object.keys(dict).join("|"), "g");
+        }
+    );
+
     // click on X in emoji menu
     $(".delete").click(function (e) {
         e.preventDefault();
@@ -100,13 +108,14 @@ window.onload = function () {
     function messageHTML(message, my_id) {
         switch (message.type) {
             case 'text':
-                html = message.content;
+                html = $('<div/>').text(message.content).html();
+                html = html.replace(emoji_re, s => `<img src="${emojis[s]}">`);
                 break;
             case 'audio':
-                html = `<audio controls src="${message.content}">`
+                html = `<audio controls src="${$('<div/>').text(message.content).html()}">`
                 break;
             case 'photo':
-                html = `<a href="${message.content}"><img src="${message.content}" width="300px"></a>`
+                html = `<a href="${$('<div/>').text(message.content).html()}"><img src="${message.content}" width="300px"></a>`
                 break;
         }
         let placement, colour, x, tooltip;
@@ -127,7 +136,7 @@ window.onload = function () {
 
         return $(`<div class="d-flex justify-content-${placement} mb-4">`).append('<div class="img_cont_msg"><img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg"></div>' +
             `<div class="${colour}" ${tooltip}>${html}` +
-            `<span class="msg_time">8:40 AM, Today</span></div>${x}`);
+            `<span class="msg_time">${message.created_at.split('T')[0]}</span></div>${x}`);
     }
 
     $('#send').click(function (e) {

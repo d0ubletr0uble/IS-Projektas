@@ -34,7 +34,7 @@ class EmojiController extends Controller
         $img = base64_decode($img);
         $fileName = 'emoji' . time() . '.jpg';
         $emoji = Emoji::create([
-            'name' => '[:' . $request->input('name') . ':]',
+            'name' => ':' . $request->input('name') . ':',
             'link' => $fileName,
             'user_id' => Auth::id()
         ]);
@@ -49,5 +49,10 @@ class EmojiController extends Controller
             Storage::delete('public/' . $emoji->link); //delete actual image
             $emoji->delete(); // delete database row
         }
+    }
+
+    public function getUserEmojis()
+    {
+        return Emoji::where('user_id', Auth::id())->get()->toJson();
     }
 }
