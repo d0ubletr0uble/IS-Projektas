@@ -8,6 +8,7 @@ use App\Models\GroupMember;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class MessageController extends Controller
 {
@@ -80,6 +81,17 @@ class MessageController extends Controller
             ]);
             return response(null);
         }
+    }
+
+    public function destroy(Message $message)
+    {
+        $group = Group::where('id', $message->group_id)->get()->first();
+        if ($message->group_member_id == $group->getMemberId(Auth::id())) {
+            $message->status = 'deleted';
+            $message->save();
+            return response(null);
+        }
+
     }
 
     public function getGroupMessages(Group $group)

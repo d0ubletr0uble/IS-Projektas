@@ -68,8 +68,7 @@ window.onload = function () {
         });
     }
 
-    function checkForChanges()
-    {
+    function checkForChanges() {
         let id = $.ajax({
             url: `messages/pulse/${activeGroup}`,
             type: 'get',
@@ -79,9 +78,9 @@ window.onload = function () {
             },
             success: function (e) {
                 console.log('check');
-                if(e != latestId)
+                if (e != latestId)
                     console.log('load');
-                    loadMessages();
+                loadMessages();
             }
         })
     }
@@ -90,14 +89,15 @@ window.onload = function () {
     function showMessages(messages) {
         $('#messages').empty();
         messages = JSON.parse(messages);
+        let my_id = activeGroupElement.getAttribute('data-my_id');
         for (let message of messages) {
-            html = messageHTML(message);
+            html = messageHTML(message, my_id);
             $('#messages').append(html);
         }
         latestId = messages.pop().id;
     }
 
-    function messageHTML(message) {
+    function messageHTML(message, my_id) {
         switch (message.type) {
             case 'text':
                 html = message.content;
@@ -108,11 +108,21 @@ window.onload = function () {
             case 'photo':
                 html = `<a href="${message.content}"><img src="${message.content}" width="300px"></a>`
                 break;
-
         }
-        return $('<div class="d-flex justify-content-start mb-4">').append('<div class="img_cont_msg"><img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg"></div>' +
-            `<div class="msg_cotainer">${html}` +
-            '<span class="msg_time">8:40 AM, Today</span></div>');;
+        let placement, colour, x;
+        if (my_id == message.group_member_id) {
+            placement = 'end';
+            colour = 'msg_cotainer_send';
+            x = `<span class="delete-message" onclick="deleteMessage(${message.id})">X</span>`
+        } else {
+            placement = 'start'
+            colour = 'msg_cotainer';
+            x = '';
+        }
+
+        return $(`<div class="d-flex justify-content-${placement} mb-4">`).append('<div class="img_cont_msg"><img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg"></div>' +
+            `<div class="${colour}">${html}` +
+            `<span class="msg_time">8:40 AM, Today</span></div>${x}`);
     }
 
 
@@ -121,7 +131,9 @@ window.onload = function () {
         let id = activeGroup;
 
         $.ajax({
-            url: `messages/groups/${id}`,
+            url:
+    `messages/groups/${id}`
+,
             type: 'post',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -134,5 +146,25 @@ window.onload = function () {
         text.val(''); // clear text
     });
 
-    setInterval(checkForChanges, 30000);
+    // setInterval(checkForChanges, 30000);
+}
+
+function deleteMessage(id) {
+    if (confirm('Ar tikrai norite ištrinti šią žinutę?'))
+    {
+        $.ajax({
+            url: `messages/${id}`,
+            type: 'DELETE',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRF-TOKEN': document.getElementsByName('csrf-token')[0].content
+            },
+            success: function (e) {
+                // parent.remove();
+                document.write(e);
+            }
+        });
+
+        return false;
+    }
 }

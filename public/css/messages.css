@@ -30,8 +30,14 @@ body,html{
 
 .delete {
     color: red;
+    cursor: pointer;
     font-size: small;
     position: absolute;
+}
+
+.delete-message {
+    color: red;
+    cursor: pointer;
 }
 
 .grid-container {

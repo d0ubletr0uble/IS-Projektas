@@ -46,6 +46,7 @@ Route::prefix('admin')->group(function () {
 // message subsystem
 Route::get('/messages', [MessageController::class, 'index'])->middleware('is_blocked');
 Route::get('/messages/{group}', [MessageController::class, 'getGroupMessages'])->middleware('is_blocked');
+Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->middleware('is_blocked');
 Route::get('/messages/pulse/{group}', [MessageController::class, 'getLastMessageId'])->middleware('is_blocked');
 Route::post('/messages/groups/{group}', [MessageController::class, 'storeMessage'])->middleware('is_blocked');
 Route::get('/messages/emoji/create', [EmojiController::class, 'create'])->middleware('is_blocked');

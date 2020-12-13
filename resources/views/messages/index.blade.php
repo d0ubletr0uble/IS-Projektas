@@ -59,7 +59,7 @@
                 <div class="card-body contacts_body">
                     <ui class="contacts">
                         @foreach($groups as $group)
-                            <li id="{{$group->id}}" class="group_id">
+                            <li id="{{$group->id}}" class="group_id" data-my_id="{{$group->getMemberId(Auth::id())}}">
                                     <div class="d-flex bd-highlight group">
                                         <div class="img_cont">
                                             <img

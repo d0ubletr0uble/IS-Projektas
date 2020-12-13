@@ -64,8 +64,7 @@ function handleWAV(blob) {
             method: 'POST',
             body: formData,
             headers: { 'X-CSRF-TOKEN': document.getElementsByName('csrf-token')[0].content }
-        // }).then(r => location.href='/messages');
-        }).then(r => r.text()).then(s => document.write(s));
+        }).then(r => location.href='/messages');
 }
 
 window.onload = function init() {
