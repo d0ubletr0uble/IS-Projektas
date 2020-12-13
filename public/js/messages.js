@@ -109,22 +109,26 @@ window.onload = function () {
                 html = `<a href="${message.content}"><img src="${message.content}" width="300px"></a>`
                 break;
         }
-        let placement, colour, x;
+        let placement, colour, x, tooltip;
         if (my_id == message.group_member_id) {
+            let status = message.status;
+            status = status == 'sent' ? 'Žinutė išsiųsta' : status;
+            status = status == 'read' ? 'Žinutė perskaityta' : status;
             placement = 'end';
             colour = 'msg_cotainer_send';
             x = `<span class="delete-message" onclick="deleteMessage(${message.id})">X</span>`
+            tooltip = `data-toggle="tooltip" data-placement="top" title="${status}"`
         } else {
             placement = 'start'
             colour = 'msg_cotainer';
             x = '';
+            tooltip = '';
         }
 
         return $(`<div class="d-flex justify-content-${placement} mb-4">`).append('<div class="img_cont_msg"><img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg"></div>' +
-            `<div class="${colour}">${html}` +
+            `<div class="${colour}" ${tooltip}>${html}` +
             `<span class="msg_time">8:40 AM, Today</span></div>${x}`);
     }
-
 
     $('#send').click(function (e) {
         let text = $('#input');
@@ -132,8 +136,8 @@ window.onload = function () {
 
         $.ajax({
             url:
-    `messages/groups/${id}`
-,
+                `messages/groups/${id}`
+            ,
             type: 'post',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -150,8 +154,7 @@ window.onload = function () {
 }
 
 function deleteMessage(id) {
-    if (confirm('Ar tikrai norite ištrinti šią žinutę?'))
-    {
+    if (confirm('Ar tikrai norite ištrinti šią žinutę?')) {
         $.ajax({
             url: `messages/${id}`,
             type: 'DELETE',

@@ -27,7 +27,13 @@ class Group extends Model
         if (!$this->hasUser(Auth::id()))
             return response(null, 403);
         else
-            return Message::where('group_id', $this->id)->where('status', '!=', 'deleted')->get()->toJson();
+        {
+            $messages =  Message::where('group_id', $this->id)->where('status', '!=', 'deleted')->get();
+            $my_id = $this->getMemberId(Auth::id());
+            $other = $messages->where('group_member_id', '!=', $my_id);
+            $other->each->update(['status' => 'read']);
+            return $messages->toJson();
+        }
     }
 
     public function getLastMessageId()
