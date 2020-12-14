@@ -18,15 +18,15 @@
                             <table class="table">
                                 <thead class="text-primary">
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Last name</th>
-                                    <th>Birthday</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Block/Unblock</th>
-                                    <th>Statistics</th>
-                                    <th>Login count</th>
-                                    <th>Sent messages</th>
+                                    <th>Vardas</th>
+                                    <th>Pavardė</th>
+                                    <th>Gimtadienis</th>
+                                    <th>Slapyvardis</th>
+                                    <th>El.Paštas</th>
+                                    <th>Blokuoti/Atblokuoti</th>
+                                    <th>Statistika</th>
+                                    <th>Prisijungimai/Kiekis</th>
+                                    <th>Išsiųstos žinutės/Kiekis</th>
                                 </thead>
                                 <tbody>
                                     @foreach($users as $row)
@@ -41,7 +41,7 @@
                                         @if($row->is_blocked == 0)
                                         <td class="notblocked">
                                             <a href="{{route('admin_block', $row->id)}}" class="btn btn-primary"
-                                                onclick="return confirm('Are you sure?')"> <i
+                                                onclick="return confirm('Ar tikrai norite užblokuoti?')"> <i
                                                     class="fas fa-user-slash if"></i>
                                             </a>
                                         </td>

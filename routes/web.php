@@ -8,6 +8,7 @@ use App\Http\Controllers\EmojiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PagesController;
 use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,12 +28,7 @@ Route::prefix('admin')->group(function () {
     Route::get('unblock/{id}', 'App\Http\Controllers\AdminController@unblock')->name('admin_unblock')->middleware('is_admin');
     Route::get('/logincnt/{id}', 'App\Http\Controllers\AdminController@login_count')->name('admin_logincnt')->middleware('is_admin');
     Route::get('/sentmesg/{id}', 'App\Http\Controllers\AdminController@sent_messages')->name('admin_sentmesg')->middleware('is_admin');
-
-
-
-
-
-    Route::get('/statistics/{id}', function ($id) {return view('admin_statistics');})->name('admin_statistics')->middleware('is_admin');
+    Route::get('/statistics/{id}', 'App\Http\Controllers\AdminController@user_statistics')->name('admin_statistics')->middleware('is_admin');
 
     Route::get('/admin_forum', function () {return view('admin_forum');})->name('admin_forum')->middleware('is_admin');
     Route::get('/admin_remove', function () {return view('admin_remove');})->name('admin_remove')->middleware('is_admin');
@@ -99,10 +95,20 @@ Route::prefix('forum')->name('Forumas')->group(function(){
     Route::any ( '/search', function () {
         $q = Request::input ( 'q' );
         $message = Post::where ( 'title', 'LIKE', '%' . $q . '%' )->orWhere ( 'username', 'LIKE', '%' . $q . '%' )->get ();
-        if (count ( $message ) > 0)
+        if (count ( $message ) > 0){
+            if(strlen ( $q ) > 0){
+                $query = 'INSERT INTO `freedbtech_orange`.`search_info` (`freedbtech_orange`.`search_info`.`search_info`,`freedbtech_orange`.`search_info`.`user_id`,`freedbtech_orange`.`search_info`.`date`) VALUES (:q,:id,:dt)';
+                $insert = DB::insert($query, ['q' => $q,'id' => Auth::user()->id,'dt' => date('Y-m-d H:i:s')]);
+            }
             return view ( 'Forumas.search' )->withDetails ( $message )->withQuery ( $q );
-        else
+        }
+        else{
+            if(strlen ( $q ) > 0){
+                $query = 'INSERT INTO `freedbtech_orange`.`search_info` (`freedbtech_orange`.`search_info`.`search_info`,`freedbtech_orange`.`search_info`.`user_id`,`freedbtech_orange`.`search_info`.`date`) VALUES (:q,:id,:dt)';
+                $insert = DB::insert($query, ['q' => $q,'id' => Auth::user()->id,'dt' => date('Y-m-d H:i:s')]);
+            }
             return view ( 'Forumas.search' )->withMessage ( 'Temų su tokiu pavadinimu nebuvo rasta' );
+        }
     } ) ->name('.search');
 });
 
