@@ -11,26 +11,22 @@
                     <div class="p-6">
                         <div class="flex items-center">
                             <div class="ml-4">
-                                Prisijungimai
+                                Prisijungimų kiekis: @php echo count($info); @endphp
                             </div>
                         </div>
                         <div class="ml-12">
                             <table class="table">
                                 <thead class="text-primary">
-                                    <th>ID</th>
-                                    <th>User id</th>
-                                    <th>Country</th>
-                                    <th>Device</th>
-                                    <th>Browser</th>
-                                    <th>Date</th>
+                                    <th>Šalis</th>
+                                    <th>Įrenginys</th>
+                                    <th>Naršyklė</th>
+                                    <th>Data</th>
                                     <th>Ip</th>
                                     <th>Os</th>
                                 </thead>
                                 <tbody>
                                     @foreach($info as $row)
                                     <tr>
-                                        <td>{{$row->id}}</td>
-                                        <td>{{$row->user_id}}</td>
                                         <td>{{$row->country}}</td>
                                         <td>{{$row->device}}</td>
                                         <td>{{$row->browser}}</td>
@@ -40,6 +36,7 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
+
                         </div>
                         </table>
                     </div>

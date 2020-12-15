@@ -11,32 +11,22 @@
                     <div class="p-6">
                         <div class="flex items-center">
                             <div class="ml-4">
-                                Žinutės
+                                Išsiųstų žinučių kiekis: @php echo count($messages); @endphp
                             </div>
                         </div>
                         <div class="ml-12">
                             <table class="table">
                                 <thead class="text-primary">
-                                    <th>ID</th>
-                                    <th>Žinutė</th>
+                                    <th>Žinutės turinys</th>
                                     <th>Tipas</th>
                                     <th>Išsiųsta</th>
-                                    {{-- <th>Browser</th>
-                                    <th>Date</th>
-                                    <th>Ip</th>
-                                    <th>Os</th> --}}
                                 </thead>
                                 <tbody>
                                     @foreach($messages as $row)
                                     <tr>
-                                        <td>{{$row->id}}</td>
                                         <td>{{$row->content}}</td>
                                         <td>{{$row->type}}</td>
                                         <td>{{$row->created_at}}</td>
-                                        {{-- <td>{{$row->browser}}</td>
-                                        <td>{{$row->date}}</td>
-                                        <td>{{$row->ip}}</td>
-                                        <td>{{$row->os}}</td> --}}
                                     </tr>
                                     @endforeach
                                 </tbody>
