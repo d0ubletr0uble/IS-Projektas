@@ -75,7 +75,7 @@ class EditController extends Controller
         //dd($groupmembinf->count() > 0);
         if($groupmembinf->count() > 0)
         {
-            return back()->with('status','Useris yra grupėje');
+            return back()->with('status','Narys yra grupėje');
         }
         else
             {
@@ -87,8 +87,23 @@ class EditController extends Controller
                 $groupMember->nick = $request->futumemb_name;
                 $groupMember->matymas = 0;
                 $groupMember->save();
-                return back()->with('good','Viskas zjbs');;
+                return back()->with('good','Narys pridėtas');;
 
         }
+    }
+    public function leave($groupid, Request $request)
+    {
+        $groupMemb1 = $request->idMemb;
+        //dd($groupMemb);
+        $groupMemb = GroupMember::where(['user_id' => $groupMemb1, 'group_id' => $groupid])->first();
+        //$name10 = GroupMember::find($groupMemb);
+        //dd($groupMemb->matymas);
+        //$groupMemb = GroupMember::find($groupmembid);
+        //dd($groupMemb);
+        $groupMemb->matymas = 1;
+        //dd($groupMemb->matymas);
+        $groupMemb->save();
+        //dd($groupMemb);
+        return redirect('/messages');
     }
 }

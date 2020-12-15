@@ -59,6 +59,8 @@
                 <div class="card-body contacts_body">
                     <ui class="contacts">
                         @foreach($groups as $group)
+                            @foreach($membmatymas as $membmatyma)
+                            @if($membmatyma->matymas == 0 && $membmatyma->group_id == $group->id)
                             <li id="{{$group->id}}" class="group_id" data-my_id="{{$group->getMemberId(Auth::id())}}">
                                     <div class="d-flex bd-highlight group">
                                         <div class="img_cont">
@@ -70,13 +72,15 @@
                                         <div class="user_info">
                                             <span>{{$group->name}}</span>
                                             <br>
-                                            @if($group->users_id == Auth::id())
+
                                                 <a class="text-warning"
                                                    href="/messages/groups/{{$group->id}}/edit">Redaguoti</a>
-                                            @endif
+
                                         </div>
                                     </div>
                             </li>
+                            @endif
+                        @endforeach
                         @endforeach
                     </ui>
                 </div>

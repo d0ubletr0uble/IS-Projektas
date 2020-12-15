@@ -21,7 +21,9 @@ class MessageController extends Controller
     {
         $emojis = Emoji::getUserEmojis(Auth::id());
         $groups = Group::getUserGroups(Auth::id());
-        return view('messages.index', compact('emojis', 'groups'));
+        $idofa = Auth::id();
+        $membmatymas = GroupMember::whereIn('user_id',  [$idofa])->get();
+        return view('messages.index', compact('emojis', 'groups', 'membmatymas'));
     }
 
     public function audio(Group $group)

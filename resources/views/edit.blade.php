@@ -427,7 +427,7 @@
                         <div class="flex items-center">
                             <div class="ml-4 text-lg text-gray-200 leading-7 font-semibold">Grupės valdymo langas</div>
                         </div>
-                        <li>{{$groupid}}</li>
+                        @if($groupid->users_id == Auth::id() )
                         <div class="ml-12">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                                 <p style="color:red">
@@ -452,17 +452,32 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                <p style="color:red">
-                                    <a href="" class="underline text-gray-900 dark:text-white">Išėjimas iš grupės</a>
-                                </p>
-                            </div>
-                        </div>
+                        @else
+                            <td>
+                                <form method="post" class="delete" action="{{route('member.leave',$groupid->id)}}" onsubmit= 'return ConfirmDelete()' >
+                                    {{csrf_field()}}
+                                        <input type="hidden" name="idMemb" value={{Auth::id()}} />
+                                        <button type="submit" class="btn btn-danger">Išeiti</button>
+                                </form>
+                                </li>
+                            </td>
+                            @endif
                     </div>
                 </div>
             </div>
         </div>
+            <script>
+
+                function ConfirmDelete()
+                {
+                    var x = confirm("Are you sure you want to delete?");
+                    if (x)
+                        return true;
+                    else
+                        return false;
+                }
+
+            </script>
 </body>
 
 </html>
