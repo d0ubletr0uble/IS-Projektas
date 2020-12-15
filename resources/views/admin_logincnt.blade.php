@@ -25,6 +25,7 @@
                                     <th>Os</th>
                                 </thead>
                                 <tbody>
+                                    @if (count($info) > 0)
                                     @foreach($info as $row)
                                     <tr>
                                         <td>{{$row->country}}</td>
@@ -35,6 +36,15 @@
                                         <td>{{$row->os}}</td>
                                     </tr>
                                     @endforeach
+                                    @else
+                                    <tr>
+                                        <td>
+                                            <div class="ml-4">
+                                                <p style="font-size:1.2rem;margin-left:-24px">Prisijungimų nėra</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endif
                                 </tbody>
 
                         </div>

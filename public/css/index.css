@@ -22,7 +22,7 @@ body {
 }
 
 body {
-	background-image: url("oranges.jpg");
+	background-image: url("grad.jpg");
 	background-repeat: round;
 	color: #fff;
 }
@@ -66,8 +66,8 @@ body {
 	border: none;
 	border-radius: 50%;
 	background: none;
-	background-color: #fff;
-	color: #52be7f;
+	background-color: orange;
+	color: white;
 	text-align: center;
 	font-weight: 700;
 	font-size: 1.5em;
@@ -161,9 +161,9 @@ body {
 	height: 14.5em;
 	border-radius: 50%;
 	background: #429a67;
-	background: -webkit-radial-gradient(transparent 35%, #09b722 35%);
-	background: -moz-radial-gradient(transparent 35%, #09b722 35%);
-	background: radial-gradient(transparent 35%, #09b722 35%);
+	background: -webkit-radial-gradient(transparent 35%, #8acc32 35%);
+	background: -moz-radial-gradient(transparent 35%, #8acc32 35%);
+	background: radial-gradient(transparent 35%, #8acc32 35%);
 	color: #fff;
 	text-align: center;
 	text-decoration: none;
@@ -182,7 +182,7 @@ body {
 	position: relative;
 	top: 1.8em;
 	display: block;
-	font-size: .5em;
+	font-size: .43em;
 	font-weight: 700;
 	text-transform: uppercase;
 }

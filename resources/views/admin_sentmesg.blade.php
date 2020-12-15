@@ -22,6 +22,7 @@
                                     <th>Išsiųsta</th>
                                 </thead>
                                 <tbody>
+                                    @if (count($messages) > 0)
                                     @foreach($messages as $row)
                                     <tr>
                                         <td>{{$row->content}}</td>
@@ -29,6 +30,15 @@
                                         <td>{{$row->created_at}}</td>
                                     </tr>
                                     @endforeach
+                                    @else
+                                    <tr>
+                                        <td>
+                                            <div class="ml-4">
+                                                <p style="font-size:1.2rem;margin-left:-24px">Išsiųstų žinučių nėra</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endif
                                 </tbody>
                         </div>
                         </table>
