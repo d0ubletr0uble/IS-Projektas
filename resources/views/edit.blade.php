@@ -427,6 +427,7 @@
                         <div class="flex items-center">
                             <div class="ml-4 text-lg text-gray-200 leading-7 font-semibold">Grupės valdymo langas</div>
                         </div>
+                        <li>{{$groupid}}</li>
                         <div class="ml-12">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                                 <p style="color:red">

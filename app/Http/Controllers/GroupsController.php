@@ -28,7 +28,6 @@ class GroupsController extends Controller
 
         return view('groups.create', compact('groups'));
     }
-
     public function store(Request $request)
     {
         $group = Group::create(
@@ -42,6 +41,7 @@ class GroupsController extends Controller
             [
                 'group_id' => $group->id,
                 'user_id' => Auth::id()
+
             ]
         );
 

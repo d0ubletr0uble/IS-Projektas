@@ -47,9 +47,15 @@
                     </div>
                     <div class="ml-12">
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            <label for="tema">Įveskite žmogaus slapyvardį:</label><br><br>
-                            <textarea rows="1" cols="30" placeholder="Įveskite slapyvardį"></textarea><br><br>
-                            <input type="submit" class="button2" value="Pridėti">
+                            • Įveskite vartotojo slapyvardį:
+                            <form action = "{{route('member.search',$groupid->id)}}" type="get">
+                                <input type="text" name="usname" id="usname" placeholder="Įveskite Slapyvardį">
+                                <br>
+                                {{ method_field('PUT') }}
+                                {{method_field('patch')}}
+                                {{csrf_field() }}
+                                <button type="submit" class="button2">Ieškoti</button>
+                            </form>
                         </div>
                     </div>
                 </div>

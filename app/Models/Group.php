@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class Group extends Model
 {
     protected $fillable = ['name', 'users_id'];
+    public $primaryKey = 'id';
 
     public static function getUserGroups($userId)
     {

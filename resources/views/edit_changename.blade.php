@@ -45,12 +45,19 @@
                     <div class="flex items-center">
                         <div class="ml-4 text-lg text-gray-200 leading-7 font-semibold">Grupės valdymo langas</div>
                     </div>
-                    <div class="ml-12">
+                    <li>{{$groupid ?? ''}}</li><div class="ml-12">
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            <label for="tema">Įveskite naują grupės pavadinimą:</label><br><br>
-                            <textarea rows="1" cols="30" placeholder="Įveskite pavadinimą"></textarea><br><br>
-                            <input type="submit" class="button2" value="Pakeisti">
-                        </div>
+                            • Įveskite naują grupės pavadinimą:
+                            <form action="{{route('group.change',$groupid)}}" method="post">
+
+                                <input rows="2" cols="30" type="text" name="name1" id="name1" placeholder="Įveskite pavadinimą">
+                                <br>
+                                {{ method_field('PUT') }}
+                                {{method_field('patch')}}
+                                {{csrf_field()}}
+                                <button type="submit" class="button2">Pakeisti</button>
+                            </form>
+
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -45,36 +46,29 @@
                     <div class="flex items-center">
                         <div class="ml-4 text-lg text-gray-200 leading-7 font-semibold">Grupės valdymo langas</div>
                     </div>
-                    <div class="ml-12">
+                    <div class="ml-xl-5">
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            <p style="color:red">
-                                • Vartotojas1
-                                <a href="" class="underline text-gray-900 dark:text-white">IŠMESTI</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="ml-12">
-                        <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            <p style="color:red">
-                                • Vartotojas2
-                                <a href="" class="underline text-gray-900 dark:text-white">IŠMESTI</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="ml-12">
-                        <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            <p style="color:red">
-                                • Vartotojas3
-                                <a href="" class="underline text-gray-900 dark:text-white">IŠMESTI</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="ml-12">
-                        <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            <p style="color:red">
-                                • Vartotojas4
-                                <a href="" class="underline text-gray-900 dark:text-white">IŠMESTI</a>
-                            </p>
+                            <ul>
+                                @foreach($groupsMembs as $groupsMembs)
+                                    @foreach($user as $user)
+                                    @if($groupsMembs->group_id == $id->id)
+                                        @if($groupsMembs->user_id == $user->id)
+                                            @if($groupsMembs->user_id != $id->users_id)
+                                        <td>
+                                            <form method="post" class="delete" action="{{route('member.destroy',$id->id)}}" >
+                                                {{csrf_field()}}
+                                            <li>{{$groupsMembs->group_id}} - {{$user->username}}
+                                                <input type="hidden" name="_method" value="DELETE" />
+                                                <button type="submit" class="btn btn-danger">Išmesti</button>
+                                            </form>
+                                            </li>
+                                        </td>
+                                            @endif
+                                    @endif
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EditController;
 use App\Http\Controllers\GroupsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -59,24 +60,20 @@ Route::get('/messages/emoji/list', [EmojiController::class, 'getUserEmojis'])->m
 
 // Grupės sukūrimas
 Route::get('/messages/groups/create', [GroupsController::class, 'create']);
-Route::get('messages/groups/{group}', [GroupsController::class, 'edit']);
+//Route::get('messages/groups/{group}', [GroupsController::class, 'edit']);
 Route::post('/messages/groups', [GroupsController::class, 'store']);
 
 
+//grupės redagavimas
+Route::get('/messages/groups/{group}/edit', [EditController::class, 'editshow']);
+Route::get('/messages/groups/{group}/edit/adduser', [EditController::class, 'addshow']);
+Route::get('/messages/groups/{group}/edit/removeuser', [EditController::class, 'removshow']);
+Route::get('/messages/groups/{group}/edit/changename', [EditController::class, 'changeshow']);
+Route::match(['put','patch'],'/messages/groups/{group}/edit/changename','App\Http\Controllers\EditController@change')->name('group.change');
+Route::delete('/messages/groups/{group}/edit/removeuser','App\Http\Controllers\EditController@destroy')->name('member.destroy');
 
-Route::get('/messages/edit', function () {
-    return view('edit');
-})->middleware('is_blocked');
-Route::get('/messages/edit/adduser', function () {
-    return view('edit_adduser');
-})->middleware('is_blocked');
-Route::get('/messages/edit/removeuser', function () {
-    return view('edit_removeuser');
-})->middleware('is_blocked');
-Route::get('/messages/edit/changename', function () {
-    return view('edit_changename');
-})->middleware('is_blocked');
-
+Route::get('/messages/groups/{group}/edit/adduser/search','App\Http\Controllers\EditController@search')->name('member.search');
+Route::post('/messages/groups/{group}/edit/adduser/search','App\Http\Controllers\EditController@addMemb')->name('member.add');
 
 
 Route::prefix('forum')->name('Forumas')->group(function(){
