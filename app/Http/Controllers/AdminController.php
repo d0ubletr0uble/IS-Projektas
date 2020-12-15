@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
+use App\Models\search_info;
 use App\Models\Info;
 use App\Models\Message;
 use Illuminate\Support\Facades\DB;
@@ -62,29 +63,16 @@ class AdminController extends Controller
 
     public function user_statistics($id)
     {   
-        $query_mesg_type = 'SELECT `freedbtech_orange`.`messages`.`type`,COUNT(`freedbtech_orange`.`messages`.`type`) as `num`
-                            FROM `freedbtech_orange`.`group_members`
-                            INNER JOIN `freedbtech_orange`.`messages`
-                            ON `freedbtech_orange`.`group_members`.`group_id` = `freedbtech_orange`.`messages`.`group_id`
-                            WHERE `freedbtech_orange`.`group_members`.`user_id` = :id
-                            GROUP BY `freedbtech_orange`.`messages`.`type`';
+        $query_mesg_type = search_info::mesg_query();
         $mesg_count = DB::select($query_mesg_type, ['id' => $id]);
 
-        $query_ips = 'SELECT `freedbtech_orange`.`login_info`.`ip`,COUNT(`freedbtech_orange`.`login_info`.`ip`) as `num`
-                      FROM `freedbtech_orange`.`login_info`
-                      WHERE `freedbtech_orange`.`login_info`.`user_id` = :id
-                      GROUP BY `freedbtech_orange`.`login_info`.`ip`';
+        $query_ips = Info::info_query();
         $ip_count = DB::select($query_ips, ['id' => $id]);
 
-        $query_devices = 'SELECT `freedbtech_orange`.`login_info`.`device`,COUNT(`freedbtech_orange`.`login_info`.`device`) as `num`
-                          FROM `freedbtech_orange`.`login_info`
-                          WHERE `freedbtech_orange`.`login_info`.`user_id` = :id
-                          GROUP BY `freedbtech_orange`.`login_info`.`device`';
+        $query_devices = Info::device_query();
         $device_count = DB::select($query_devices, ['id' => $id]);
 
-        $query_search= 'SELECT `freedbtech_orange`.`search_info`.`search_info`,`freedbtech_orange`.`search_info`.`date` 
-                        FROM `freedbtech_orange`.`search_info`
-                        WHERE `freedbtech_orange`.`search_info`.`user_id` = :id';
+        $query_search= search_info::search_query();
         $searches = DB::select($query_search, ['id' => $id]);
 
         return view('admin_statistics')->with('mesg_count', $mesg_count)->with('ip_count',$ip_count)->with('device_count',$device_count)->with('searches',$searches);   
