@@ -50,23 +50,21 @@
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                             <ul>
                                 @foreach($groupsMembs as $groupsMembs)
-                                    @foreach($user as $user)
                                     @if($groupsMembs->group_id == $id->id)
-                                        @if($groupsMembs->user_id == $user->id)
                                             @if($groupsMembs->user_id != $id->users_id)
+                                            @if($groupsMembs->matymas == 0)
                                         <td>
                                             <form method="post" class="delete" action="{{route('member.destroy',$id->id)}}" >
                                                 {{csrf_field()}}
-                                            <li>{{$groupsMembs->group_id}} - {{$user->username}}
-                                                <input type="hidden" name="_method" value="DELETE" />
+                                            <li>{{$groupsMembs->group_id}} - {{$groupsMembs->nick}}
+                                                <input type="hidden" name="idMemb" value={{$groupsMembs->id}} />
                                                 <button type="submit" class="btn btn-danger">Išmesti</button>
                                             </form>
                                             </li>
                                         </td>
                                             @endif
-                                    @endif
                                         @endif
-                                    @endforeach
+                                    @endif
                                 @endforeach
                             </ul>
                         </div>

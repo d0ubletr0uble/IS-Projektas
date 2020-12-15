@@ -19,6 +19,7 @@ class CreateGroupMembersTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
             $table->string('nick');
+            $table->integer('matymas')->default(0);
         });
     }
 

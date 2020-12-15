@@ -15,7 +15,7 @@ class GroupMember extends Model
     use HasFactory;
     public $table = "group_members";
 
-    protected $fillable = ['group_id', 'user_id', 'user_username'];
+    protected $fillable = ['group_id', 'user_id', 'nick', 'matymas'];
 
     public static function getMemberId($groupId, $userId)
     {

@@ -51,18 +51,20 @@ class EditController extends Controller
         $name10->save();
         return back();
     }
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        $groupMemb = GroupMember::find($id);
-        $groupMembMessg = Message::find($id);
-        $groupMembMessg->delete();
-        $groupMemb->delete();
+        $groupMemb = $request->idMemb;
+        $groupMemb = GroupMember::where(['id' => $groupMemb])->first();
+        //$groupMemb = GroupMember::find($groupmembid);
+        //dd($groupMemb);
+        $groupMemb->matymas = 1;
+        $groupMemb->save();
         return back();
     }
     public function search($group_id, Request $request){
         $id = Group::where(['id' => $group_id])->first();
-        $memb = GroupMember::All();
         $search_text = $request->input('usname');;
+        $memb = GroupMember::where('nick', 'LIKE', '%'.$search_text.'%')->get();
         $futurememb = User::where('username', 'LIKE', '%'.$search_text.'%')->get();
 
         return view('edit_adduser_search', compact('futurememb', 'id', 'memb'));
@@ -71,10 +73,20 @@ class EditController extends Controller
     {
         $id = Group::where(['id' => $group_id])->get()->first();
         $id = $id->id;
-        $groupMember = new GroupMember();
-        $groupMember->group_id = $id;
-        $groupMember->user_id = $request->futumemb_id;
-        $groupMember->save();
-        return back();
+        if(GroupMember::where(['group_id' => $id], ['user_id' => $request->futumemb_id], ['matymas' => 0])->exists())
+        {
+            return redirect('/messages')->with('status','Useris yra grupėje');
+        }
+        else
+            {
+                $groupMember = new GroupMember();
+                $groupMember->group_id = $id;
+                $groupMember->user_id = $request->futumemb_id;
+                $groupMember->nick = $request->futumemb_name;
+                $groupMember->matymas = 0;
+                $groupMember->save();
+                return back();
+
+        }
     }
 }

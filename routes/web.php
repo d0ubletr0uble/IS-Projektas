@@ -66,7 +66,7 @@ Route::get('/messages/groups/{group}/edit/adduser', [EditController::class, 'add
 Route::get('/messages/groups/{group}/edit/removeuser', [EditController::class, 'removshow']);
 Route::get('/messages/groups/{group}/edit/changename', [EditController::class, 'changeshow']);
 Route::match(['put','patch'],'/messages/groups/{group}/edit/changename','App\Http\Controllers\EditController@change')->name('group.change');
-Route::delete('/messages/groups/{group}/edit/removeuser','App\Http\Controllers\EditController@destroy')->name('member.destroy');
+Route::post('/messages/groups/{group}/edit/removeuser','App\Http\Controllers\EditController@destroy')->name('member.destroy');
 
 Route::get('/messages/groups/{group}/edit/adduser/search','App\Http\Controllers\EditController@search')->name('member.search');
 Route::post('/messages/groups/{group}/edit/adduser/search','App\Http\Controllers\EditController@addMemb')->name('member.add');

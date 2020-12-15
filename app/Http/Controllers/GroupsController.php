@@ -30,6 +30,9 @@ class GroupsController extends Controller
     }
     public function store(Request $request)
     {
+        $name10 = User::where(['id' => Auth::id()])->get()->first();
+        $name = $name10->username;
+        //dd($name);
         $group = Group::create(
             [
                 'name' => $request->input('name1'),
@@ -40,8 +43,8 @@ class GroupsController extends Controller
         GroupMember::create(
             [
                 'group_id' => $group->id,
-                'user_id' => Auth::id()
-
+                'user_id' => Auth::id(),
+                'nick' => $name
             ]
         );
 

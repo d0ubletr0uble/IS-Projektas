@@ -18,6 +18,7 @@
                                         {{csrf_field() }}
                                         <li>{{$futurememb->username}}</li>
                                         <input type="hidden" name="futumemb_id" value={{$futurememb->id}} />
+                                        <input type="hidden" name="futumemb_name" value={{$futurememb->username}} />
                                         <button type="submit" class="button2">Pridėti</button>
                                     </form>
                                 @endforeach
