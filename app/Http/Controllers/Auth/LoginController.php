@@ -41,7 +41,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    
+
     public function getip(){
         $ipaddress = '';
         if (isset($_SERVER['HTTP_CLIENT_IP']))
@@ -61,7 +61,7 @@ class LoginController extends Controller
         return $ipaddress;
     }
 
-    
+
   	public static function get_os(){
 
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
@@ -99,7 +99,7 @@ class LoginController extends Controller
         }
         return $os_platform;
     }
-    
+
   	public static function get_browsers(){
 
         $user_agent= $_SERVER['HTTP_USER_AGENT'];
@@ -271,18 +271,18 @@ class LoginController extends Controller
             $username = $request->input('username');
             $users = User::select('id')->where('username',$username)->first();
             $info = new Info;
-            
+
             $getip = $this->getip();
             $getcountry = $this->ip_info($getip, "Country Code");
-            
+
             if(is_null($getcountry)){//LT if 127.0.0.1
                 $getcountry = "LT";
             }
-        
+
             $getos = $this->get_os();
             $getbrowser = $this->get_browsers();
             $getdevice = $this->get_device();
-            
+
             $info->user_id = $users->id;
             $info->country = $getcountry;
             $info->device = $getdevice;
@@ -290,7 +290,7 @@ class LoginController extends Controller
             $info->date = date('Y-m-d H:i:s');
             $info->ip = $getip;
             $info->os = $getos;
-        
+
             error_log($info->id);
             error_log($info->country);
             error_log($info->device);
@@ -299,10 +299,10 @@ class LoginController extends Controller
             error_log($info->ip);
             error_log($info->os);
             $info->save();
-            
+
             return redirect()->intended('home');
         } else {
-            return redirect()->route('login')->with('error', 'Username and Password combination is wrong.');
+            return redirect()->route('login')->with('error', 'Neteisingas prisijungimo vardas ar slaptažodis');
         }
 
     }
