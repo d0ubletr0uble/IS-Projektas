@@ -50,7 +50,7 @@
                             • Įveskite naują grupės pavadinimą:
                             <form action="{{route('group.change',$groupid)}}" method="post">
 
-                                <input rows="2" cols="30" type="text" name="name1" id="name1" placeholder="Įveskite pavadinimą">
+                                <input rows="2" cols="30" type="text" name="name1" id="name1" placeholder="Įveskite pavadinimą" required>
                                 <br>
                                 {{ method_field('PUT') }}
                                 {{method_field('patch')}}

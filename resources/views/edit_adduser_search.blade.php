@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (\Session::has('status'))
+        <div class="alert alert-warning">
+            <p>{!! \Session::get('status') !!}</p>
+        </div>
+        @elseif(\Session::has('good'))
+        <div class="alert alert-success">
+            <p>{!! \Session::get('good') !!}</p>
+        </div>
+    @endif
 
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">

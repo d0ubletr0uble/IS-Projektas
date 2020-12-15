@@ -54,7 +54,7 @@
                                             @if($groupsMembs->user_id != $id->users_id)
                                             @if($groupsMembs->matymas == 0)
                                         <td>
-                                            <form method="post" class="delete" action="{{route('member.destroy',$id->id)}}" >
+                                            <form method="post" class="delete" action="{{route('member.destroy',$id->id)}}" onsubmit= 'return ConfirmDelete()' >
                                                 {{csrf_field()}}
                                             <li>{{$groupsMembs->group_id}} - {{$groupsMembs->nick}}
                                                 <input type="hidden" name="idMemb" value={{$groupsMembs->id}} />
@@ -73,5 +73,18 @@
             </div>
         </div>
     </div>
+        <script>
+
+            function ConfirmDelete()
+            {
+                var x = confirm("Are you sure you want to delete?");
+                if (x)
+                    return true;
+                else
+                    return false;
+            }
+
+        </script>
 </body>
+
 </html>

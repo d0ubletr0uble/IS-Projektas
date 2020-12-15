@@ -71,21 +71,23 @@ class EditController extends Controller
     }
     public function addMemb($group_id, Request $request)
     {
-        $id = Group::where(['id' => $group_id])->get()->first();
-        $id = $id->id;
-        if(GroupMember::where(['group_id' => $id], ['user_id' => $request->futumemb_id], ['matymas' => 0])->exists())
+        $groupmembinf = GroupMember::where(['group_id' => $group_id, 'user_id' => $request->futumemb_id, 'matymas' => 0])->get();
+        //dd($groupmembinf->count() > 0);
+        if($groupmembinf->count() > 0)
         {
-            return redirect('/messages')->with('status','Useris yra grupėje');
+            return back()->with('status','Useris yra grupėje');
         }
         else
             {
+                $id = Group::where(['id' => $group_id])->get()->first();
+                $id = $id->id;
                 $groupMember = new GroupMember();
                 $groupMember->group_id = $id;
                 $groupMember->user_id = $request->futumemb_id;
                 $groupMember->nick = $request->futumemb_name;
                 $groupMember->matymas = 0;
                 $groupMember->save();
-                return back();
+                return back()->with('good','Viskas zjbs');;
 
         }
     }
