@@ -14,7 +14,7 @@ window.onload = function () {
         let id = $(this).attr("href");
         let parent = $(this).parent();
 
-        if (!confirm('Do you really want to delete selected emoji?\n(This action is not reversable)'))
+        if (!confirm('Ar tikrai norite ištrinti pasirinktą emoji?'))
             return false;
 
         $.ajax({
@@ -109,7 +109,8 @@ window.onload = function () {
         switch (message.type) {
             case 'text':
                 html = $('<div/>').text(message.content).html();
-                html = html.replace(emoji_re, s => `<img src="${emojis[s]}">`);
+                if (!emoji_re.toString().includes('?'))
+                    html = html.replace(emoji_re, s => `<img src="${emojis[s]}">`);
                 break;
             case 'audio':
                 html = `<audio controls src="${$('<div/>').text(message.content).html()}">`

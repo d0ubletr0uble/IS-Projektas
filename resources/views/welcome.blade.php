@@ -2,10 +2,17 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orange - sistema</title>
+    <meta name="keywords" content="css transforms, circular navigation, round navigation, circular menu, tutorial"/>
+    <meta name="author" content="Sara Soueidan for Codrops"/>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+    <link rel="stylesheet" type="text/css" href="css/demo.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <script src="js/modernizr-2.6.2.min.js"></script>
 
-    <title>Laravel</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -290,7 +297,7 @@
             grid-template-columns: repeat(1, minmax(0, 1fr))
         }
 
-        @media (min-width:640px) {
+        @media (min-width: 640px) {
             .sm\:rounded-lg {
                 border-radius: .5rem
             }
@@ -337,7 +344,7 @@
             }
         }
 
-        @media (min-width:768px) {
+        @media (min-width: 768px) {
             .md\:border-t-0 {
                 border-top-width: 0
             }
@@ -351,14 +358,14 @@
             }
         }
 
-        @media (min-width:1024px) {
+        @media (min-width: 1024px) {
             .lg\:px-8 {
                 padding-left: 2rem;
                 padding-right: 2rem
             }
         }
 
-        @media (prefers-color-scheme:dark) {
+        @media (prefers-color-scheme: dark) {
             .dark\:bg-gray-800 {
                 --bg-opacity: 1;
                 background-color: #2d3748;
@@ -407,58 +414,45 @@
     </style>
 </head>
 
+
 <body class="antialiased">
-    <h1><img src="https://media.giphy.com/media/iJgyjInSJyTxNYlEfx/giphy.gif" alt="test" class="imgg"></h1>
-    <div
-        class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-        @if (Route::has('login'))
-        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-            @auth
-            <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Profile</a>
-            @else
-            <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
+@if (Route::has('login'))
+    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block" style="z-index: 1">
+        @auth
+            <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Profilis</a>
+        @else
+            <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Prisijungti</a>
 
             @if (Route::has('register'))
-            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Registruotis</a>
             @endif
-            @endif
-        </div>
         @endif
-
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            @if(auth()->check() && auth()->user()->is_admin == 1)
-            <div class="p-6">
-                <div class="flex items-center">
-                    <div class="ml-4 text-lg leading-7 font-semibold"><a href="/admin"
-                            class="underline text-gray-900 dark:text-white">Admin langas</a></div>
-                </div>
-            </div>
-            @else
-            @endif
-
-            <div class="p-6">
-                <div class="flex items-center">
-                    <div class="ml-4 text-lg leading-7 font-semibold"><a href="/messages"
-                            class="underline text-gray-900 dark:text-white">Žinučių posistemis</a></div>
-                </div>
-            </div>
-            <div class="p-6">
-                <div class="flex items-center">
-                    <div class="ml-4 text-lg leading-7 font-semibold"><a href="/forum/posts"
-                            class="underline text-gray-900 dark:text-white">Turinio valdymas</a></div>
-                </div>
-
-            </div>
-            <div class="p-6">
-                <div class="flex items-center">
-                    <div class="ml-4 text-lg leading-7 font-semibold"><a href="/home"
-                            class="underline text-gray-900 dark:text-white">Profilis</a></div>
-                </div>
-            </div>
-
-
-        </div>
     </div>
+@endif
+<h1><img src="https://media.giphy.com/media/iJgyjInSJyTxNYlEfx/giphy.gif" alt="test" class="imgg"></h1>
+<div class="container">
+    <!-- Top Navigation -->
+
+    <div class="component">
+        <h2>Orange</h2>
+        <!-- Start Nav Structure -->
+        <button class="cn-button" id="cn-button">Meniu</button>
+        <div class="cn-wrapper" id="cn-wrapper">
+            <ul>
+                <li><a href="/messages"><span>Žinutės</span></a></li>
+                <li><a href="/forum/posts"><span>Turinio<br>valdymas</span></a></li>
+                <li><a href="/home"><span>Profilis</span></a></li>
+                @if(auth()->check() && auth()->user()->is_admin == 1)
+                    <li><a href="/admin"><span style="color: orange">Admin</span></a></li>
+                @endif
+            </ul>
+        </div>
+        <!-- End of Nav Structure -->
+    </div>
+
+</div><!-- /container -->
+<script src="js/polyfills.js"></script>
+<script src="js/index.js"></script>
 </body>
 
 </html>
