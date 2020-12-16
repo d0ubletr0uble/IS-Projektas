@@ -12,9 +12,11 @@ class search_info extends Model
 
     public static function mesg_query(){
         $query_mesg_type = 'SELECT `freedbtech_orange`.`messages`.`type`,COUNT(`freedbtech_orange`.`messages`.`type`) as `num`
-                            FROM `freedbtech_orange`.`group_members`
-                            INNER JOIN `freedbtech_orange`.`messages`
-                            ON `freedbtech_orange`.`group_members`.`group_id` = `freedbtech_orange`.`messages`.`group_id`
+                            FROM `freedbtech_orange`.`users`
+                            JOIN `freedbtech_orange`.`group_members`
+                            ON `freedbtech_orange`.`users`.`id` = `freedbtech_orange`.`group_members`.`user_id`
+                            JOIN `freedbtech_orange`.`messages`
+                            ON `freedbtech_orange`.`group_members`.`id` = `freedbtech_orange`.`messages`.`group_member_id`
                             WHERE `freedbtech_orange`.`group_members`.`user_id` = :id
                             GROUP BY `freedbtech_orange`.`messages`.`type`';
         return $query_mesg_type;
