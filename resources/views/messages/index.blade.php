@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="input-group">
-                        <input type="text" placeholder="Search..." name="" class="form-control search">
+                        <input type="text" placeholder="Ieškoti..." name="" class="form-control search">
                         <div class="input-group-prepend">
                             <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
                         </div>
@@ -127,7 +127,7 @@
                             </div>
                         </div>
                         <textarea id="input" class="form-control type_msg"
-                                  placeholder="Type your message..."></textarea>
+                                  placeholder="Rašykite tekstinę žinutę čia..."></textarea>
                         <div class="input-group-append">
                             <li id="action_menu_btn2" class="input-group-text btn"><i class="fas fa-smile-wink"></i>
                             </li>
