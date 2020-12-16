@@ -6,9 +6,12 @@ use App\Models\Emoji;
 use App\Models\Group;
 use App\Models\GroupMember;
 use App\Models\Message;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Mail\Mailable;
+use Mail;
 
 class MessageController extends Controller
 {
@@ -81,6 +84,19 @@ class MessageController extends Controller
                 'group_id' => $group->id,
                 'group_member_id' => GroupMember::getMemberId($group->id, Auth::id())
             ]);
+            $str='Tekstas: ' .$request->input('text');
+            $details=[
+                'title'=>'Gauta nauja žinutė:'.$group->name,
+                'body' => $str
+            ];
+            //Mail::to('opaso80@gmail.com')->send(new \App\Mail\orangemail($details));
+            $vartotojai = GroupMember::All();
+            foreach($vartotojai as $vartotojas){
+                $naudotojai = User::find($vartotojas->user_id);
+                if(($vartotojas->matymas == 0) && ($vartotojas->group_id == $group->id)){
+                    Mail::to($naudotojai->email)->send(new \App\Mail\orangemail($details));
+                }
+            }
             return response(null);
         }
     }

@@ -62,6 +62,9 @@ Route::post('/messages/groups', [GroupsController::class, 'store']);
 
 //grupės redagavimas
 Route::get('/messages/groups/{group}/edit', [EditController::class, 'editshow']);
+Route::get('create_groups_table', function () {
+    return view('groups.create_groups_table');
+});
 Route::get('/messages/groups/{group}/edit/adduser', [EditController::class, 'addshow']);
 Route::get('/messages/groups/{group}/edit/removeuser', [EditController::class, 'removshow']);
 Route::get('/messages/groups/{group}/edit/changename', [EditController::class, 'changeshow']);
