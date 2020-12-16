@@ -10,8 +10,11 @@
     <script src="{{asset('js/emoji.js')}}"></script>
 </head>
 <body>
-
-<main>
+<br>
+<br>
+<br>
+<h1 style="text-align: center">Emoji sukūrimo langas</h1>
+<main st>
     <div class="left-block">
         <div class="colors">
             <button type="button" value="#0000ff"></button>
