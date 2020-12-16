@@ -84,6 +84,8 @@ class EditController extends Controller
             return back()->with('status','Narys yra grupėje');
         }
         else
+        {
+            if(GroupMember::where(['group_id' => $group_id, 'user_id' => $request->futumemb_id, 'matymas' => 1])->count() > 0)
             {
                 $id = Group::where(['id' => $group_id])->get()->first();
                 $id = $id->id;
@@ -93,7 +95,22 @@ class EditController extends Controller
                 $groupMember->nick = $request->futumemb_name;
                 $groupMember->matymas = 0;
                 $groupMember->save();
-                return back()->with('good','Narys pridėtas');
+                return back()->with('good', 'Narys pridėtas');
+            }
+            else
+            {
+                $id = Group::where(['id' => $group_id])->get()->first();
+                $groupMember = new GroupMember();
+                $id = $id->id;
+                // $groupMember = GroupMember::where(['user_id' => $request->futumemb_id, 'group_id' => $group_id])->first();
+                $groupMember->group_id = $id;
+                $groupMember->user_id = $request->futumemb_id;
+                $groupMember->nick = $request->futumemb_name;
+                $groupMember->matymas = 0;
+                $groupMember->save();
+                return back()->with('good', 'Narys pridėtas');
+
+            }
 
         }
     }

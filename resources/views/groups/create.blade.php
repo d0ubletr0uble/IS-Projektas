@@ -48,11 +48,6 @@
                     <div class="ml-12">
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                             • Įveskite grupės pavadinimą:
-                            <ul>
-                                @foreach($groups as $groups)
-                                    <li>{{$groups->id}} - {{$groups->name}}</li>
-                                @endforeach
-                            </ul>
                             <form action = "/messages/groups" method="post">
                                 <input rows="2" cols="30" type="text" name="name1" placeholder="Įveskite pavadinimą">
                                 <br>
