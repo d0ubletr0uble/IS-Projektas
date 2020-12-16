@@ -66,7 +66,7 @@
                                         <div class="d-flex bd-highlight group">
                                             <div class="img_cont">
                                                 <img
-                                                    src="https://2.bp.blogspot.com/-8ytYF7cfPkQ/WkPe1-rtrcI/AAAAAAAAGqU/FGfTDVgkcIwmOTtjLka51vineFBExJuSACLcBGAs/s320/31.jpg"
+                                                    src="https://image.flaticon.com/icons/png/512/32/32441.png"
                                                     class="rounded-circle user_img">
                                                 <span class="online_icon offline"></span>
                                             </div>
@@ -92,12 +92,12 @@
                 <div class="card-header msg_head">
                     <div class="d-flex bd-highlight">
                         <div class="img_cont">
-                            <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+                            <img src="https://image.flaticon.com/icons/png/512/32/32441.png"
                                  class="rounded-circle user_img">
                             <span class="online_icon"></span>
                         </div>
                         <div class="user_info">
-                            <span id="group_name">Jonas</span>
+                            <span id="group_name">-</span>
                             <p>Žinučių istorija</p>
                         </div>
                     </div>
