@@ -99,7 +99,6 @@
                         <div class="user_info">
                             <span id="group_name">Jonas</span>
                             <p>Žinučių istorija</p>
-                            <span><a class="test" href="{{ url('/messages/edit') }}">Grupes nustatymai</a></span>
                         </div>
                     </div>
                 </div>

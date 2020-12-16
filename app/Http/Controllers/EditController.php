@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class EditController extends Controller
 {
@@ -30,7 +32,6 @@ class EditController extends Controller
     public function removshow($group_id, Request $request)
     {
         $id = Group::where(['id' => $group_id])->first();
-        //$id = Group::find($id);
         $groupsMembs = GroupMember::All();
         $user = User::All();
         return view('edit_removeuser', compact('groupsMembs','id','user'));
@@ -42,21 +43,27 @@ class EditController extends Controller
     }
     public function change($group_id, Request $request)
     {
-        $id = Group::where(['id' => $group_id])->get()->first();
-        //dd($id);
-        $name10 = Group::find($id->id);
-        $yo = $request->name1;
-        $name10->name = $request->input('name1');
-        //dd($name10);
-        $name10->save();
-        return back();
+        $validator = Validator::make(
+            [
+                'name' => $request->input('name1')
+            ],
+            [
+                'name' =>'required|unique:App\Models\Group,name'
+            ]
+    );
+        if($validator->fails()) return Redirect::back()->with('bad','Pavadinimas jau užimtas');
+        else {
+            $id = Group::where(['id' => $group_id])->get()->first();
+            $name10 = Group::find($id->id);
+            $name10->name = $request->input('name1');
+            $name10->save();
+            return redirect('/messages');
+        }
     }
     public function destroy($id, Request $request)
     {
         $groupMemb = $request->idMemb;
         $groupMemb = GroupMember::where(['id' => $groupMemb])->first();
-        //$groupMemb = GroupMember::find($groupmembid);
-        //dd($groupMemb);
         $groupMemb->matymas = 1;
         $groupMemb->save();
         return back();
@@ -72,7 +79,6 @@ class EditController extends Controller
     public function addMemb($group_id, Request $request)
     {
         $groupmembinf = GroupMember::where(['group_id' => $group_id, 'user_id' => $request->futumemb_id, 'matymas' => 0])->get();
-        //dd($groupmembinf->count() > 0);
         if($groupmembinf->count() > 0)
         {
             return back()->with('status','Narys yra grupėje');
@@ -81,29 +87,22 @@ class EditController extends Controller
             {
                 $id = Group::where(['id' => $group_id])->get()->first();
                 $id = $id->id;
-                $groupMember = new GroupMember();
+                $groupMember = GroupMember::where(['user_id' => $request->futumemb_id, 'group_id' => $group_id])->first();
                 $groupMember->group_id = $id;
                 $groupMember->user_id = $request->futumemb_id;
                 $groupMember->nick = $request->futumemb_name;
                 $groupMember->matymas = 0;
                 $groupMember->save();
-                return back()->with('good','Narys pridėtas');;
+                return back()->with('good','Narys pridėtas');
 
         }
     }
     public function leave($groupid, Request $request)
     {
         $groupMemb1 = $request->idMemb;
-        //dd($groupMemb);
-        $groupMemb = GroupMember::where(['user_id' => $groupMemb1, 'group_id' => $groupid])->first();
-        //$name10 = GroupMember::find($groupMemb);
-        //dd($groupMemb->matymas);
-        //$groupMemb = GroupMember::find($groupmembid);
-        //dd($groupMemb);
+        $groupMemb = GroupMember::where(['user_id' => $groupMemb1, 'group_id' => $groupid, 'matymas' => 0])->first();
         $groupMemb->matymas = 1;
-        //dd($groupMemb->matymas);
         $groupMemb->save();
-        //dd($groupMemb);
         return redirect('/messages');
     }
 }

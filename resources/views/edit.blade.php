@@ -470,7 +470,7 @@
 
                 function ConfirmDelete()
                 {
-                    var x = confirm("Are you sure you want to delete?");
+                    var x = confirm("Ar tikrai norite palikti grupe?");
                     if (x)
                         return true;
                     else

@@ -49,7 +49,7 @@
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                             • Įveskite vartotojo slapyvardį:
                             <form action = "{{route('member.search',$groupid->id)}}" type="get">
-                                <input type="text" name="usname" id="usname" placeholder="Įveskite Slapyvardį">
+                                <input type="text" name="usname" id="usname" placeholder="Įveskite Slapyvardį" required>
                                 <br>
                                 {{ method_field('PUT') }}
                                 {{method_field('patch')}}

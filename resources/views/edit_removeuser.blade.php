@@ -56,7 +56,7 @@
                                         <td>
                                             <form method="post" class="delete" action="{{route('member.destroy',$id->id)}}" onsubmit= 'return ConfirmDelete()' >
                                                 {{csrf_field()}}
-                                            <li>{{$groupsMembs->group_id}} - {{$groupsMembs->nick}}
+                                            <li>{{$groupsMembs->nick}}
                                                 <input type="hidden" name="idMemb" value={{$groupsMembs->id}} />
                                                 <button type="submit" class="btn btn-danger">Išmesti</button>
                                             </form>
@@ -77,7 +77,7 @@
 
             function ConfirmDelete()
             {
-                var x = confirm("Are you sure you want to delete?");
+                var x = confirm("Ar tikrai norite išmesti šį narį?");
                 if (x)
                     return true;
                 else

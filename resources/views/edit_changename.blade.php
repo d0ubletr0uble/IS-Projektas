@@ -36,6 +36,11 @@
         </div>
     @endif
 
+        @if (\Session::has('bad'))
+            <div class="alert alert-warning">
+                <p>{!! \Session::get('bad') !!}</p>
+            </div>
+        @endif
 
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
@@ -45,7 +50,7 @@
                     <div class="flex items-center">
                         <div class="ml-4 text-lg text-gray-200 leading-7 font-semibold">Grupės valdymo langas</div>
                     </div>
-                    <li>{{$groupid ?? ''}}</li><div class="ml-12">
+                        <div class="ml-12">
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                             • Įveskite naują grupės pavadinimą:
                             <form action="{{route('group.change',$groupid)}}" method="post">
