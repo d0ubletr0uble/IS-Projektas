@@ -57,7 +57,9 @@ class AdminController extends Controller
 
     public function sent_messages($id)
     {
-        $messages = Message::join('group_members','group_members.group_id','messages.group_id')->where('group_members.user_id',$id)->get();
+        $messages = Message::join('group_members','group_members.id','messages.group_member_id')
+        ->join('users','users.id','group_members.user_id')
+        ->where('users.id',$id)->get();
         return view('admin_sentmesg')->with('messages', $messages); 
     }
 
