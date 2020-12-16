@@ -134,7 +134,6 @@ window.onload = function () {
             x = '';
             tooltip = '';
         }
-
         return $(`<div class="d-flex justify-content-${placement} mb-4">`).append('<div class="img_cont_msg"><img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg"></div>' +
             `<div class="${colour}" ${tooltip}>${html}` +
             `<span class="msg_time">${message.created_at.split('T')[0]}</span></div>${x}`);
@@ -160,7 +159,7 @@ window.onload = function () {
         text.val(''); // clear text
     });
 
-    // setInterval(checkForChanges, 30000);
+    setInterval(checkForChanges, 30000);
 }
 
 function deleteMessage(id) {
