@@ -77,7 +77,7 @@ window.onload = function () {
     let saveButton = document.getElementById('save');
 
     saveButton.addEventListener('click', function () {
-        let imageName = prompt('Please enter emoji name');
+        let imageName = prompt('Įrašykite emoji pavadinimą');
         let canvasDataURL = canvas.toDataURL();
 
         fetch('/messages/emoji',

@@ -87,8 +87,10 @@ window.onload = function () {
             success: function (e) {
                 console.log('check');
                 if (e != latestId)
+                {
                     console.log('load');
-                loadMessages();
+                    loadMessages();
+                }
             }
         })
     }
