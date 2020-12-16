@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Group;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class GroupsController extends Controller
 {
@@ -33,22 +35,33 @@ class GroupsController extends Controller
         $name10 = User::where(['id' => Auth::id()])->get()->first();
         $name = $name10->username;
         //dd($name);
-        $group = Group::create(
+        $validator = Validator::make(
             [
-                'name' => $request->input('name1'),
-                'users_id' => Auth::id()
+                'name' => $request->input('name1')
+            ],
+            [
+                'name' => 'required|unique:App\Models\Group,name'
             ]
         );
+        if ($validator->fails()) return Redirect::back()->with('bad', 'Pavadinimas jau užimtas');
+        else {
+            $group = Group::create(
+                [
+                    'name' => $request->input('name1'),
+                    'users_id' => Auth::id()
+                ]
+            );
 
-        GroupMember::create(
-            [
-                'group_id' => $group->id,
-                'user_id' => Auth::id(),
-                'nick' => $name
-            ]
-        );
+            GroupMember::create(
+                [
+                    'group_id' => $group->id,
+                    'user_id' => Auth::id(),
+                    'nick' => $name
+                ]
+            );
 
-        return redirect('/messages');
+            return redirect('/messages');
+        }
     }
 
     public function edit(Group $group)
