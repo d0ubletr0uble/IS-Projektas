@@ -43,6 +43,7 @@ window.onload = function () {
     let activeGroup = $(".group_id").attr('id');
     let activeGroupElement = $(".group_id")[0];
     let latestId = -1;
+    let latestStatus = '';
 
     $(".group_id").click(function (e) {
         e.preventDefault();
@@ -85,8 +86,9 @@ window.onload = function () {
                 'X-CSRF-TOKEN': document.getElementsByName('csrf-token')[0].content
             },
             success: function (e) {
+                e = JSON.parse(e);
                 console.log('check');
-                if (e != latestId)
+                if (e.id != latestId || e.status != latestStatus)
                 {
                     console.log('load');
                     loadMessages();
@@ -104,7 +106,9 @@ window.onload = function () {
             html = messageHTML(message, my_id);
             $('#messages').append(html);
         }
-        latestId = messages.pop().id;
+        let last = messages.pop();
+        latestId = last.id;
+        latestStatus = last.status;
     }
 
     function messageHTML(message, my_id) {
