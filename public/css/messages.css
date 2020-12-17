@@ -192,7 +192,7 @@ a:hover {
     color: rgba(255,255,255,0.6);
 }
 .msg_cotainer{
-    min-width: 70px;
+    min-width: 120px;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 10px;
@@ -202,7 +202,7 @@ a:hover {
     position: relative;
 }
 .msg_cotainer_send{
-    min-width: 70px;
+    min-width: 120px;
     margin-top: auto;
     margin-bottom: auto;
     margin-right: 10px;
