@@ -37,12 +37,12 @@ class Group extends Model
         }
     }
 
-    public function getLastMessageId()
+    public function getLastMessage()
     {
         if (!$this->hasUser(Auth::id()))
             return response(null, 401);
         else
-            return Message::where('group_id', $this->id)->latest()->first()->id;
+            return Message::where('group_id', $this->id)->where('status', '!=', 'deleted')->latest()->first()->toJson();
     }
 
     public function hasUser($userId)

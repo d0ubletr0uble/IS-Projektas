@@ -117,9 +117,9 @@ class MessageController extends Controller
         return $group->getMessages();
     }
 
-    public function getLastMessageId(Group $group)
+    public function getLastMessage(Group $group)
     {
-        return $group->getLastMessageId();
+        return $group->getLastMessage();
     }
 
 }
