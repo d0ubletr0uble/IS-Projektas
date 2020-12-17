@@ -73,9 +73,7 @@
                                             <div class="user_info">
                                                 <span>{{$group->name}}</span>
                                                 <br>
-                                                @if($group->users_id == Auth::id())
                                                     <a class="text-warning" href="/messages/groups/{{$group->id}}/edit">Redaguoti</a>
-                                                @endif
                                             </div>
                                         </div>
                                     </li>
