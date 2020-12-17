@@ -29,10 +29,12 @@ class Group extends Model
             return response(null, 403);
         else
         {
-            $messages =  Message::where('group_id', $this->id)->where('status', '!=', 'deleted')->get();
+            $messages =  Message::where('messages.group_id', $this->id)->where('status', '!=', 'deleted')->get();
             $my_id = $this->getMemberId(Auth::id());
             $other = $messages->where('group_member_id', '!=', $my_id);
             $other->each->update(['status' => 'read']);
+
+            $messages =  Message::where('messages.group_id', $this->id)->join('group_members', 'messages.group_member_id', 'group_members.id')->where('status', '!=', 'deleted')->orderBy('messages.id')->select('messages.*', 'nick')->get();
             return $messages->toJson();
         }
     }

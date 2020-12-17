@@ -90,6 +90,8 @@ window.onload = function () {
                 console.log('check');
                 if (e.id != latestId || e.status != latestStatus)
                 {
+                    latestId = e.id;
+                    latestStatus = e.status;
                     console.log('load');
                     loadMessages();
                 }
@@ -106,9 +108,6 @@ window.onload = function () {
             html = messageHTML(message, my_id);
             $('#messages').append(html);
         }
-        let last = messages.pop();
-        latestId = last.id;
-        latestStatus = last.status;
     }
 
     function messageHTML(message, my_id) {
@@ -142,7 +141,7 @@ window.onload = function () {
         }
         return $(`<div class="d-flex justify-content-${placement} mb-4">`).append('<div class="img_cont_msg"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/User_font_awesome.svg" class="rounded-circle user_img_msg"></div>' +
             `<div class="${colour}" ${tooltip}>${html}` +
-            `<span class="msg_time">${message.created_at.split('T')[0]}</span></div>${x}`);
+            `<span class="msg_time">${message.nick} ${message.created_at.split('T')[0]}</span></div>${x}`);
     }
 
     $('#send').click(function (e) {
