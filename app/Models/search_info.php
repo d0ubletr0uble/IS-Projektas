@@ -11,21 +11,21 @@ class search_info extends Model
 
 
     public static function mesg_query(){
-        $query_mesg_type = 'SELECT `freedbtech_orange`.`messages`.`type`,COUNT(`freedbtech_orange`.`messages`.`type`) as `num`
-                            FROM `freedbtech_orange`.`users`
-                            JOIN `freedbtech_orange`.`group_members`
-                            ON `freedbtech_orange`.`users`.`id` = `freedbtech_orange`.`group_members`.`user_id`
-                            JOIN `freedbtech_orange`.`messages`
-                            ON `freedbtech_orange`.`group_members`.`id` = `freedbtech_orange`.`messages`.`group_member_id`
-                            WHERE `freedbtech_orange`.`group_members`.`user_id` = :id
-                            GROUP BY `freedbtech_orange`.`messages`.`type`';
+        $query_mesg_type = 'SELECT `messages`.`type`,COUNT(`messages`.`type`) as `num`
+                            FROM `users`
+                            JOIN `group_members`
+                            ON `users`.`id` = `group_members`.`user_id`
+                            JOIN `messages`
+                            ON `group_members`.`id` = `messages`.`group_member_id`
+                            WHERE `group_members`.`user_id` = :id
+                            GROUP BY `messages`.`type`';
         return $query_mesg_type;
     }
     
     public static function search_query(){
-        $query_search = 'SELECT `freedbtech_orange`.`search_info`.`search_info`,`freedbtech_orange`.`search_info`.`date` 
-                         FROM `freedbtech_orange`.`search_info`
-                         WHERE `freedbtech_orange`.`search_info`.`user_id` = :id';
+        $query_search = 'SELECT `search_info`.`search_info`,`search_info`.`date` 
+                         FROM `search_info`
+                         WHERE `search_info`.`user_id` = :id';
         return $query_search;
     }
 }

@@ -30,18 +30,18 @@ class Info extends Model
 
 
     public static function info_query(){
-        $query_ips = 'SELECT `freedbtech_orange`.`login_info`.`ip`,COUNT(`freedbtech_orange`.`login_info`.`ip`) as `num`
-                      FROM `freedbtech_orange`.`login_info`
-                      WHERE `freedbtech_orange`.`login_info`.`user_id` = :id
-                      GROUP BY `freedbtech_orange`.`login_info`.`ip`';
+        $query_ips = 'SELECT `login_info`.`ip`,COUNT(`login_info`.`ip`) as `num`
+                      FROM `login_info`
+                      WHERE `login_info`.`user_id` = :id
+                      GROUP BY `login_info`.`ip`';
         return $query_ips;
     }
 
     public static function device_query(){
-        $query_devices = 'SELECT `freedbtech_orange`.`login_info`.`device`,COUNT(`freedbtech_orange`.`login_info`.`device`) as `num`
-                          FROM `freedbtech_orange`.`login_info`
-                          WHERE `freedbtech_orange`.`login_info`.`user_id` = :id
-                          GROUP BY `freedbtech_orange`.`login_info`.`device`';
+        $query_devices = 'SELECT `login_info`.`device`,COUNT(`login_info`.`device`) as `num`
+                          FROM `login_info`
+                          WHERE `login_info`.`user_id` = :id
+                          GROUP BY `login_info`.`device`';
         return $query_devices;
     }    
 }
