@@ -52,7 +52,7 @@ Route::delete('messages/emoji/{emoji}', [EmojiController::class, 'destroy']);
 Route::post('/messages/photo', [MessageController::class, 'storePhoto']);
 Route::get('/messages/audio/create/{group}', [MessageController::class, 'audio'])->middleware('is_blocked');
 Route::post('/messages/audio', [MessageController::class, 'storeAudio']);
-Route::get('/messages/emoji/list', [EmojiController::class, 'getUserEmojis'])->middleware('is_blocked');
+Route::get('/messages/emoji/list', [EmojiController::class, 'getEmojis'])->middleware('is_blocked');
 
 // Grupės sukūrimas
 Route::get('/messages/groups/create', [GroupsController::class, 'create']);

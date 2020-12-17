@@ -51,8 +51,8 @@ class EmojiController extends Controller
         }
     }
 
-    public function getUserEmojis()
+    public function getEmojis()
     {
-        return Emoji::where('user_id', Auth::id())->get()->toJson();
+        return Emoji::all()->toJson();
     }
 }

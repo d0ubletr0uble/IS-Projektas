@@ -128,7 +128,7 @@ window.onload = function () {
             status = status == 'read' ? 'Žinutė perskaityta' : status;
             placement = 'end';
             colour = 'msg_cotainer_send';
-            x = `<span class="delete-message" onclick="deleteMessage(${message.id})">X</span>`
+            x = `<span class="delete-message" onclick="deleteMessage(this, ${message.id})">X</span>`
             tooltip = `data-toggle="tooltip" data-placement="top" title="${status}"`
         } else {
             placement = 'start'
@@ -161,10 +161,10 @@ window.onload = function () {
         text.val(''); // clear text
     });
 
-    setInterval(checkForChanges, 30000);
+    setInterval(checkForChanges, 2000);
 }
 
-function deleteMessage(id) {
+function deleteMessage(el, id) {
     if (confirm('Ar tikrai norite ištrinti šią žinutę?')) {
         $.ajax({
             url: `messages/${id}`,
@@ -174,8 +174,7 @@ function deleteMessage(id) {
                 'X-CSRF-TOKEN': document.getElementsByName('csrf-token')[0].content
             },
             success: function (e) {
-                // parent.remove();
-                document.write(e);
+                el.parentElement.remove()
             }
         });
 
