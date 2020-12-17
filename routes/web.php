@@ -98,14 +98,14 @@ Route::prefix('forum')->name('Forumas')->group(function(){
         $message = Post::where ( 'title', 'LIKE', '%' . $q . '%' )->orWhere ( 'username', 'LIKE', '%' . $q . '%' )->get ();
         if (count ( $message ) > 0){
             if(strlen ( $q ) > 0){
-                $query = 'INSERT INTO `freedbtech_orange`.`search_info` (`freedbtech_orange`.`search_info`.`search_info`,`freedbtech_orange`.`search_info`.`user_id`,`freedbtech_orange`.`search_info`.`date`) VALUES (:q,:id,:dt)';
+                $query = 'INSERT INTO `search_info` (`search_info`.`search_info`,`search_info`.`user_id`,`search_info`.`date`) VALUES (:q,:id,:dt)';
                 $insert = DB::insert($query, ['q' => $q,'id' => Auth::user()->id,'dt' => date('Y-m-d H:i:s')]);
             }
             return view ( 'Forumas.search' )->withDetails ( $message )->withQuery ( $q );
         }
         else{
             if(strlen ( $q ) > 0){
-                $query = 'INSERT INTO `freedbtech_orange`.`search_info` (`freedbtech_orange`.`search_info`.`search_info`,`freedbtech_orange`.`search_info`.`user_id`,`freedbtech_orange`.`search_info`.`date`) VALUES (:q,:id,:dt)';
+                $query = 'INSERT INTO `search_info` (`search_info`.`search_info`,`search_info`.`user_id`,`search_info`.`date`) VALUES (:q,:id,:dt)';
                 $insert = DB::insert($query, ['q' => $q,'id' => Auth::user()->id,'dt' => date('Y-m-d H:i:s')]);
             }
             return view ( 'Forumas.search' )->withMessage ( 'Temų su tokiu pavadinimu nebuvo rasta' );
